@@ -1,0 +1,109 @@
+<ion-content>
+  <ion-fab top right *ngIf="mode == 'home'">
+    <button ion-fab color="steel" (click)="goToIntro()"><ion-icon name="md-help"></ion-icon></button>
+  </ion-fab>
+  <ion-fab top right *ngIf="mode != 'home'">
+    <button ion-fab color="steel" (click)="showHome()"><ion-icon name="md-close"></ion-icon></button>
+  </ion-fab>
+  <ion-fab top left>
+    <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == 'en'">
+    <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == 'es'">
+  </ion-fab>
+  <div class="top" text-center>
+    <img src="assets/images/logo.png">
+  </div>
+  <div class="bottom" text-center>
+    <div *ngIf="mode == 'home'">
+      <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="loginWithFacebook()">
+        <ion-icon name="logo-facebook"></ion-icon>
+        {{ 'CONTINUE_WITH_FACEBOOK' | translate }}
+      </button>
+      <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="loginWithGoogle()">
+        <ion-icon name="logo-google"></ion-icon>
+        {{ 'CONTINUE_WITH_GOOGLE' | translate }}
+      </button>
+      <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="loginWithTwitter()">
+        <ion-icon name="logo-twitter"></ion-icon>
+        {{ 'CONTINUE_WITH_TWITTER' | translate }}
+      </button>
+      <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="showSignup()">
+        <ion-icon name="md-mail-open"></ion-icon>
+        {{ 'SIGNUP_WITH_EMAIL' | translate }}
+      </button>
+      <button ion-button clear color="steel" [disabled]="!network.online()" (click)="showLogin()">
+        {{ 'HAVE_ACCOUNT' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div class="bottom" *ngIf="mode == 'login'" text-center>
+    <form [formGroup]="loginForm" (keydown)="keyDownFunction($event)">
+      <ion-list no-margin no-padding>
+        <ion-item no-lines>
+          <ion-input type="email" value="" formControlName="email" placeholder="{{ 'ENTER_EMAIL' | translate }}"></ion-input>
+        </ion-item>
+        <p *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.touched">{{ 'PLEASE_ENTER_EMAIL' | translate }}</p>
+        <p *ngIf="!loginForm.controls.email.valid && !loginForm.controls.email.hasError('required') && loginForm.controls.email.touched">{{ 'PLEASE_ENTER_VALID_EMAIL' | translate }}</p>
+
+        <ion-item no-lines>
+          <ion-input type="password" formControlName="password" placeholder="{{ 'ENTER_PASSWORD' | translate }}"></ion-input>
+        </ion-item>
+        <p *ngIf="loginForm.controls.password.hasError('required') && loginForm.controls.password.touched">{{ 'PLEASE_ENTER_PASSWORD' | translate }}</p>
+        <p *ngIf="!loginForm.controls.password.valid && !loginForm.controls.password.hasError('required') && loginForm.controls.password.touched">{{ 'PASSWORD_INVALID' | translate }}</p>
+      </ion-list>
+      <button ion-button clear color="steel" (click)="showReset()" [disabled]="!network.online()">
+        {{ 'FORGOT_PASSWORD' | translate }}
+      </button>
+      <button ion-button icon-left color="robust" (click)="loginWithEmail()" [disabled]="!network.online() || !loginForm.valid"><ion-icon name="md-key"></ion-icon>{{ 'LOGIN_JETPACK' | translate }}</button>
+      <button ion-button icon-left color="skyblue" (click)="loginWithFacebook()" class="half-width" [disabled]="!network.online()"><ion-icon name="logo-facebook"></ion-icon>Facebook</button>
+      <button ion-button icon-left color="coral" (click)="loginWithGoogle()" class="half-width" [disabled]="!network.online()"><ion-icon name="logo-google"></ion-icon>Google</button>
+    </form>
+  </div>
+
+  <div class="bottom" *ngIf="mode == 'signup'" text-center>
+    <form [formGroup]="signupForm" (keydown)="keyDownFunction($event)">
+      <ion-list no-margin no-padding>
+
+        <ion-item no-lines>
+          <ion-input type="email" formControlName="email" placeholder="{{ 'ENTER_EMAIL' | translate }}"></ion-input>
+        </ion-item>
+        <p *ngIf="signupForm.controls.email.hasError('required') && signupForm.controls.email.touched">{{ 'PLEASE_ENTER_EMAIL' | translate }}</p>
+        <p *ngIf="!signupForm.controls.email.valid && !signupForm.controls.email.hasError('required') && signupForm.controls.email.touched">{{ 'PLEASE_ENTER_VALID_EMAIL' | translate }}</p>
+
+        <ion-item no-lines>
+          <ion-input type="password" formControlName="password" placeholder="{{ 'ENTER_PASSWORD' | translate }}"></ion-input>
+        </ion-item>
+        <p *ngIf="signupForm.controls.password.hasError('required') && signupForm.controls.password.touched">{{ 'PLEASE_ENTER_PASSWORD' | translate }}</p>
+        <p *ngIf="!signupForm.controls.password.valid && !signupForm.controls.password.hasError('required') && signupForm.controls.password.touched">{{ 'PASSWORD_INVALID' | translate }}</p>
+
+        <ion-item no-lines>
+          <ion-input type="password" formControlName="confirmPassword" placeholder="{{ 'REENTER_PASSWORD' | translate }}"></ion-input>
+        </ion-item>
+        <p *ngIf="signupForm.controls.confirmPassword.hasError('required') && signupForm.controls.confirmPassword.touched">{{ 'PLEASE_CONFIRM_PASSWORD' | translate }}</p>
+        <p *ngIf="!signupForm.controls.confirmPassword.hasError('required') && (signupForm.controls.password.touched && signupForm.controls.confirmPassword.touched) && signupForm.value['confirmPassword'] != signupForm.value['password']">{{ 'PASSWORD_DO_NOT_MATCH' | translate }}</p>
+      </ion-list>
+      <button ion-button clear color="steel" (click)="showLogin()" [disabled]="!network.online()">
+        {{ 'HAVE_ACCOUNT' | translate }}
+      </button>
+      <button ion-button icon-left color="robust" (click)="signup()" no-margin no-padding [disabled]="!network.online() || !signupForm.valid || (signupForm.value['confirmPassword'] != signupForm.value['password'])"><ion-icon name="md-log-in"></ion-icon>{{ 'JOIN_JETPACK' | translate }}</button>
+      <p>{{ 'AGREE_TERMS_PRIVACY' | translate }}</p>
+    </form>
+  </div>
+
+  <div class="bottom" *ngIf="mode == 'reset'" text-center>
+    <form [formGroup]="resetForm" (keydown)="keyDownFunction($event)">
+      <p>{{ 'ENTER_EMAIL_RESET_PASSWORD' | translate }}</p>
+      <ion-list no-margin no-padding>
+        <ion-item no-lines>
+          <ion-input type="email" value="" formControlName="email" placeholder="{{ 'ENTER_EMAIL' | translate }}"></ion-input>
+        </ion-item>
+        <p *ngIf="resetForm.controls.email.hasError('required') && resetForm.controls.email.touched">{{ 'PLEASE_ENTER_EMAIL' | translate }}</p>
+        <p *ngIf="!resetForm.controls.email.valid && !resetForm.controls.email.hasError('required') && resetForm.controls.email.touched">{{ 'PLEASE_ENTER_VALID_EMAIL' | translate }}</p>
+      </ion-list>
+      <button ion-button clear color="steel" (click)="showLogin()" [disabled]="!network.online()">
+        {{ 'GOT_PASSWORD_LOGIN' | translate }}
+      </button>
+      <button ion-button icon-left color="robust" (click)="resetPassword()" [disabled]="!network.online() || !resetForm.valid"><ion-icon name="md-refresh"></ion-icon>{{ 'RESET_PASSWORD' | translate }}</button>
+    </form>
+  </div>
+</ion-content>

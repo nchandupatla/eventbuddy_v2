@@ -1,0 +1,47 @@
+<ion-content class="no-scroll">
+  <ion-slides>
+    <ion-slide>
+      <div class="text top">
+        <h3>{{ 'WELCOME_TO_JETPACK' | translate }}</h3>
+        <p>{{ 'JETPACK_ULTIMATE' | translate }}</p>
+      </div>
+      <img id="animate_1" src="assets/images/logo.png" />
+      <div class="text bottom">
+        <span>{{ 'SWIPE_TO_CONTINUE' | translate }}</span>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="text top">
+        <h3>{{ 'BEAUTIFULLY_CRAFTED' | translate }}</h3>
+        <p>{{ 'QUALITY_TESTED' | translate }}</p>
+      </div>
+      <img id="animate_2" src="assets/images/modern.png" />
+      <div class="text bottom">
+        <span>{{ 'SWIPE_TO_CONTINUE' | translate }}</span>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="text top">
+        <h3>{{ 'LOTS_FEATURES' | translate }}</h3>
+        <p>{{ 'JUMPSTART_MODERN' | translate }}</p>
+      </div>
+      <img id="animate_3" src="assets/images/features.png" />
+      <div class="text bottom">
+        <span>{{ 'SWIPE_TO_CONTINUE' | translate }}</span>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="text top">
+        <h3>{{ 'BUILD_WITH_JETPACK' | translate }}</h3>
+        <p>{{ 'LAUNCH_DREAMAPP' | translate }}</p>
+      </div>
+      <img id="animate_4" src="assets/images/launch.png"/>
+      <div class="text bottom">
+        <span>{{ 'APP_APP_AWAY' | translate }}</span>
+      </div>
+      <ion-fab top right>
+        <button ion-fab color="steel" (click)="navCtrl.setRoot('LoginPage')"><ion-icon name="md-close"></ion-icon></button>
+      </ion-fab>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,30 @@
+page-home {
+  ion-fab {
+    margin-top: 3vh;
+     img {
+       width: 56px;
+       height: 56px;
+     }
+  }
+  
+  div.top, div.bottom {
+    position: absolute;
+  }
+
+  div.top {
+    top: 24vh;
+    width: 100vw;
+
+     img {
+       width: 65vw;
+     }
+  }
+
+  div.bottom {
+    bottom: 2vh;
+  }
+
+  button {
+    width: 65vw;
+  }
+}

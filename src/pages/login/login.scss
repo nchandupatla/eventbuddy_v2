@@ -1,0 +1,59 @@
+page-login {
+  ion-fab {
+    margin-top: 3vh;
+     img {
+       width: 56px;
+       height: 56px;
+     }
+  }
+
+  div.top, div.bottom {
+    position: absolute;
+  }
+
+  div.top {
+    top: 18vh;
+    width: 100vw;
+
+     img {
+       width: 60vw;
+     }
+  }
+
+  div.bottom {
+    bottom: 2vh;
+  }
+
+  button {
+    width: 65vw;
+  }
+
+  button.half-width {
+    width: 32vw;
+  }
+
+  form {
+    margin-top: 18vh !important;
+
+    h4, p {
+      color: color($colors, robust);
+    }
+
+    p {
+      width: 65vw;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 110%;
+    }
+  }
+
+  ion-item {
+    background: rgba(255, 255, 255, 0.8) !important;
+    width: 65vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 4px !important;
+    margin-bottom: .8rem !important;
+    color: color($colors, robust) !important;
+  }
+}

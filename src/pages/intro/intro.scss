@@ -1,0 +1,38 @@
+page-intro {
+  ion-slide img {
+    height: auto !important;
+    width: 60vw !important;
+  }
+
+  div.text {
+    position: absolute;
+    width: 100vw;
+
+    p,
+    span {
+      color: color($colors, steel);
+    }
+
+    h3 {
+      font-weight: bold;
+      color: color($colors, robust);
+    }
+
+    p {
+      width: 60vw;
+      margin: auto;
+    }
+
+    span {
+      font-size: 90%;
+    }
+  }
+
+  div.top {
+    top: 12vh;
+  }
+
+  div.bottom {
+    bottom: 6vh;
+  }
+}

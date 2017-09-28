@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-fab top left *ngIf="loaded">
+    <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == 'en'">
+    <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == 'es'">
+  </ion-fab>
+  <div class="top" text-center>
+    <img src="assets/images/logo.png">
+  </div>
+  <div class="bottom" text-center *ngIf="loaded">
+    <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">
+      <ion-icon name="md-settings"></ion-icon>
+      {{ 'SET_LANGUAGE' | translate }}
+    </button>
+    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="navCtrl.push('UpdateProfilePage')">
+      <ion-icon name="md-clipboard"></ion-icon>
+      {{ 'UPDATE_PROFILE' | translate }}
+    </button>
+    <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="navCtrl.push('SendPushPage')">
+      <ion-icon name="md-mail"></ion-icon>
+      {{ 'SEND_PUSH_NOTIFICATION' | translate }}
+    </button>
+    <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="logout()">
+      <ion-icon name="md-exit"></ion-icon>
+      {{ 'LOGOUT' | translate }}
+    </button>
+  </div>
+</ion-content>

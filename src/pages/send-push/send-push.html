@@ -1,0 +1,23 @@
+<ion-header color="primary">
+  <ion-navbar hideBackButton="true">
+    <ion-buttons>
+      <button ion-button tappable (click)="navCtrl.pop()">{{ 'BACK' | translate }}</button>
+    </ion-buttons>
+    <ion-title>{{ 'SEND_PUSH_NOTIFICATION' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let user of users | usersFilter: excludedIds">
+      <ion-thumbnail item-left>
+        <img src="{{user.profilePic}}" (load)="imageLoadedMap.set(user.userId, true);" [ngClass]="{'img-loaded':imageLoadedMap.get(user.userId)}" [hidden]="!imageLoadedMap.get(user.userId)">
+        <!-- Loading indicator when photo is not yet loaded. -->
+        <ion-spinner name="circles" [ngClass]="{'center':true}" *ngIf="!imageLoadedMap.get(user.userId)"></ion-spinner>
+      </ion-thumbnail>
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
+      <p>Push: <b *ngIf="user.pushToken != ''">{{ 'AVAILABLE' | translate }}</b> <b *ngIf="user.pushToken == ''">{{ 'NOT_AVAILABLE' | translate }}</b></p>
+      <button ion-button clear item-right *ngIf="user.pushToken != ''" [disabled]="!network.online()"><ion-icon name="md-notifications" (click)="sendPushNotification(user.pushToken)"></ion-icon></button>
+      <button ion-button clear item-right *ngIf="user.pushToken == ''" disabled><ion-icon name="md-notifications-off"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+</ion-content>

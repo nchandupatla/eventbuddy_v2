@@ -1,0 +1,21 @@
+page-send-push {
+  ion-thumbnail {
+    img {
+      border-radius: 100%;
+      object-fit: cover;
+    }
+
+    ion-spinner {
+      height: 8.5vh;
+    }
+  }
+  ion-item {
+    button {
+      color: color($colors, robust) !important;
+      font-size: 125% !important;
+    }
+    b {
+      color: color($colors, robust) !important;
+    }
+  }
+}

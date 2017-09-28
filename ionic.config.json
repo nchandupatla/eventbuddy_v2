@@ -1,0 +1,11 @@
+{
+  "name": "EventBuddy",
+  "app_id": "3b027547",
+  "type": "ionic-angular",
+  "gcm_key": "2495848357121",
+  "dev_push": false,
+  "sender_id": "2495848357121",
+  "integrations": {
+    "cordova": {}
+  }
+}

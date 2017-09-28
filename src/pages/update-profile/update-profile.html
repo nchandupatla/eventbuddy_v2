@@ -1,0 +1,47 @@
+<ion-header color="primary">
+  <ion-navbar hideBackButton="true">
+    <ion-buttons>
+      <button ion-button tappable (click)="back()">{{ 'BACK' | translate }}</button>
+    </ion-buttons>
+    <ion-title>{{ 'UPDATE_PROFILE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content text-center>
+  <form [formGroup]="profileForm" (keydown)="keyDownFunction($event)">
+    <div id="avatar" *ngIf="user">
+      <button ion-fab mini color="dark" (click)="removeProfilePic()" *ngIf="user.profilePic != defaultImg && loaded"><ion-icon name="md-close"></ion-icon></button>
+      <img src="{{user.profilePic}}" *ngIf="network.online()" margin-bottom (click)="setProfilePic()" (load)="loaded = true;" [ngClass]="{'img-loaded':loaded}" [hidden]="!loaded">
+      <img src="{{user.profilePic}}" *ngIf="!network.online()" margin-bottom style="opacity: 0.6" (load)="loaded = true;" [ngClass]="{'img-loaded':loaded}" [hidden]="!loaded">
+      <!-- Loading indicator when photo is not yet loaded. -->
+      <ion-spinner name="circles" [ngClass]="{'center':true}" *ngIf="!loaded"></ion-spinner>
+    </div>
+    <ion-list no-margin no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" formControlName="firstName" placeholder="{{ 'ENTER_FIRST_NAME' | translate }}"></ion-input>
+      </ion-item>
+      <p *ngIf="profileForm.controls.firstName.hasError('required') && profileForm.controls.firstName.touched">{{ 'PLEASE_ENTER_FIRST_NAME' | translate }}</p>
+      <p *ngIf="!profileForm.controls.firstName.valid && !profileForm.controls.firstName.hasError('required') && profileForm.controls.firstName.touched">{{ 'PLEASE_ENTER_FIRST_NAME' | translate }}</p>
+      <ion-item no-lines>
+        <ion-input type="text" formControlName="lastName" placeholder="{{ 'ENTER_LAST_NAME' | translate }}"></ion-input>
+      </ion-item>
+      <p *ngIf="profileForm.controls.lastName.hasError('required') && profileForm.controls.lastName.touched">{{ 'PLEASE_ENTER_LAST_NAME' | translate }}</p>
+      <p *ngIf="!profileForm.controls.lastName.valid && !profileForm.controls.lastName.hasError('required') && profileForm.controls.lastName.touched">{{ 'PLEASE_ENTER_LAST_NAME' | translate }}</p>
+      <ion-item no-lines>
+        <ion-input type="email" formControlName="email" placeholder="{{ 'ENTER_EMAIL' | translate }}"></ion-input>
+      </ion-item>
+      <p *ngIf="profileForm.controls.email.hasError('required') && profileForm.controls.email.touched">{{ 'PLEASE_ENTER_EMAIL' | translate }}</p>
+      <p *ngIf="!profileForm.controls.email.valid && !profileForm.controls.email.hasError('required') && profileForm.controls.email.touched">{{ 'PLEASE_ENTER_VALID_EMAIL' | translate }}</p>
+     
+      <ion-item no-lines>
+        <ion-input type="phone" formControlName="phone" placeholder="Phone Number"></ion-input>
+      </ion-item>
+      <p *ngIf="profileForm.controls.phone.hasError('required') && profileForm.controls.phone.touched">Please Enter Phone Number</p>
+      <p *ngIf="!profileForm.controls.phone.valid && !profileForm.controls.phone.hasError('required') && profileForm.controls.phone.touched">Please Enter Phone Number</p>
+
+     
+      <button ion-button icon-left color="robust" (click)="updateProfile()" no-margin no-padding margin-top [disabled]="!network.online() || !profileForm.valid">
+        <ion-icon name="md-checkmark-circle"></ion-icon>{{ 'UPDATE_PROFILE' | translate }}
+      </button>
+    </ion-list>
+  </form>
+</ion-content>

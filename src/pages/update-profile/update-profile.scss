@@ -1,0 +1,58 @@
+page-update-profile {
+  div #avatar {
+    position: relative;
+    img {
+      object-fit: cover;
+      border-radius: 0.75em;
+      width: 6em;
+      height: 6em;
+    }
+
+    img.selected,
+    img:active {
+      opacity: 0.6;
+    }
+
+    button {
+      position: absolute;
+      top: -2em;
+      right: 8.5em;
+    }
+
+    ion-spinner {
+      height: 7.5em;
+    }
+  }
+
+  ion-content {
+    button {
+      width: 65vw;
+    }
+  }
+
+  form {
+    margin-top: 18vh !important;
+
+    h4,
+    p {
+      color: color($colors, robust);
+    }
+
+    p {
+      width: 65vw;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 110%;
+    }
+  }
+
+  ion-item {
+    background: rgba(255, 255, 255, 0.8) !important;
+    width: 65vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 4px !important;
+    margin-bottom: 0.8rem !important;
+    color: color($colors, robust) !important;
+  }
+}
