@@ -5,12 +5,13 @@
   <ion-fab top right *ngIf="mode != 'home'">
     <button ion-fab color="steel" (click)="showHome()"><ion-icon name="md-close"></ion-icon></button>
   </ion-fab>
-  <ion-fab top left>
+  <!-- <ion-fab top left>
     <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == 'en'">
     <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == 'es'">
-  </ion-fab>
+  </ion-fab> -->
   <div class="top" text-center>
-    <img src="assets/images/logo.png">
+    <img src="assets/images/groups.jpg">
+    <h3>Event Buddy</h3>
   </div>
   <div class="bottom" text-center>
     <div *ngIf="mode == 'home'">

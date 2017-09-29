@@ -1,11 +1,12 @@
 <ion-content>
-  <ion-fab top left *ngIf="loaded">
+  <!-- <ion-fab top left *ngIf="loaded">
     <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == 'en'">
     <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == 'es'">
-  </ion-fab>
-  <div class="top" text-center>
-    <img src="assets/images/logo.png">
-  </div>
+  </ion-fab> -->
+   <div class="top" text-center>
+    <img src="assets/images/groups.jpg">
+  </div> 
+
   <div class="bottom" text-center *ngIf="loaded">
     <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">
       <ion-icon name="md-settings"></ion-icon>
@@ -23,5 +24,6 @@
       <ion-icon name="md-exit"></ion-icon>
       {{ 'LOGOUT' | translate }}
     </button>
-  </div>
+  </div> 
+
 </ion-content>

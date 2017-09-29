@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, IonicPage, NavController, AlertController } from 'ionic-angular';
+import { Platform, IonicPage, MenuController ,NavController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AuthConfig } from '../../configs/auth-config';
 import { AlertProvider, AuthProvider, DatabaseProvider, NetworkProvider, NotificationProvider, LoadingProvider, TranslateProvider, UsersApi } from '../../providers';
@@ -13,6 +13,7 @@ import * as firebase from 'firebase';
 export class HomePage {
   private loaded: boolean;
   private language: string;
+  tab1:any;
 
   constructor(private platform: Platform,
     public navCtrl: NavController,
@@ -25,11 +26,17 @@ export class HomePage {
     private translate: TranslateProvider,
     private loading: LoadingProvider,
     private usersApi: UsersApi,
-    private storage: Storage) {
+    private storage: Storage,
+    public menuCtrl: MenuController) {
+     // this.tab1 = HomePage;
   }
 
   ionViewWillLeave() {
     this.loading.hide();
+  }
+
+  toggleMenu(){
+
   }
 
   ionViewWillEnter() {

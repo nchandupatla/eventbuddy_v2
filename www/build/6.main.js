@@ -69,7 +69,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HomePage = (function () {
-    function HomePage(platform, navCtrl, alertCtrl, alert, auth, database, network, notification, translate, loading, usersApi, storage) {
+    function HomePage(platform, navCtrl, alertCtrl, alert, auth, database, network, notification, translate, loading, usersApi, storage, menuCtrl) {
         this.platform = platform;
         this.navCtrl = navCtrl;
         this.alertCtrl = alertCtrl;
@@ -82,9 +82,13 @@ var HomePage = (function () {
         this.loading = loading;
         this.usersApi = usersApi;
         this.storage = storage;
+        this.menuCtrl = menuCtrl;
+        // this.tab1 = HomePage;
     }
     HomePage.prototype.ionViewWillLeave = function () {
         this.loading.hide();
+    };
+    HomePage.prototype.toggleMenu = function () {
     };
     HomePage.prototype.ionViewWillEnter = function () {
         var _this = this;
@@ -210,7 +214,7 @@ var HomePage = (function () {
 HomePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\workspace\event-buddyv1\src\pages\home\home.html"*/'<ion-content>\n  <ion-fab top left *ngIf="loaded">\n    <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == \'en\'">\n    <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == \'es\'">\n  </ion-fab>\n  <div class="top" text-center>\n    <img src="assets/images/logo.png">\n  </div>\n  <div class="bottom" text-center *ngIf="loaded">\n    <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">\n      <ion-icon name="md-settings"></ion-icon>\n      {{ \'SET_LANGUAGE\' | translate }}\n    </button>\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="navCtrl.push(\'UpdateProfilePage\')">\n      <ion-icon name="md-clipboard"></ion-icon>\n      {{ \'UPDATE_PROFILE\' | translate }}\n    </button>\n    <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="navCtrl.push(\'SendPushPage\')">\n      <ion-icon name="md-mail"></ion-icon>\n      {{ \'SEND_PUSH_NOTIFICATION\' | translate }}\n    </button>\n    <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="logout()">\n      <ion-icon name="md-exit"></ion-icon>\n      {{ \'LOGOUT\' | translate }}\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\workspace\event-buddyv1\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"C:\workspace\eventbuddy_v2\src\pages\home\home.html"*/'<ion-content>\n  <!-- <ion-fab top left *ngIf="loaded">\n    <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == \'en\'">\n    <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == \'es\'">\n  </ion-fab> -->\n   <div class="top" text-center>\n    <img src="assets/images/groups.jpg">\n  </div> \n\n  <div class="bottom" text-center *ngIf="loaded">\n    <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">\n      <ion-icon name="md-settings"></ion-icon>\n      {{ \'SET_LANGUAGE\' | translate }}\n    </button>\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="navCtrl.push(\'UpdateProfilePage\')">\n      <ion-icon name="md-clipboard"></ion-icon>\n      {{ \'UPDATE_PROFILE\' | translate }}\n    </button>\n    <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="navCtrl.push(\'SendPushPage\')">\n      <ion-icon name="md-mail"></ion-icon>\n      {{ \'SEND_PUSH_NOTIFICATION\' | translate }}\n    </button>\n    <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="logout()">\n      <ion-icon name="md-exit"></ion-icon>\n      {{ \'LOGOUT\' | translate }}\n    </button>\n  </div> \n\n</ion-content>\n'/*ion-inline-end:"C:\workspace\eventbuddy_v2\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
@@ -223,7 +227,8 @@ HomePage = __decorate([
         __WEBPACK_IMPORTED_MODULE_4__providers__["j" /* TranslateProvider */],
         __WEBPACK_IMPORTED_MODULE_4__providers__["f" /* LoadingProvider */],
         __WEBPACK_IMPORTED_MODULE_4__providers__["k" /* UsersApi */],
-        __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
+        __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* MenuController */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map

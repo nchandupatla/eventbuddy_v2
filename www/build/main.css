@@ -39479,6 +39479,10 @@ page-home ion-fab img {
   height: 56px;
 }
 
+page-home .ion-icon-menu {
+  font-size: 30px;
+}
+
 page-home div.top, page-home div.bottom {
   position: absolute;
 }
