@@ -14,6 +14,7 @@ export class HomePage {
   private loaded: boolean;
   private language: string;
   tab1:any;
+  private groupList:any;
 
   constructor(private platform: Platform,
     public navCtrl: NavController,
@@ -29,6 +30,9 @@ export class HomePage {
     private storage: Storage,
     public menuCtrl: MenuController) {
      // this.tab1 = HomePage;
+     this.database.getGroups().subscribe((groups: any) => {
+       this.groupList=groups;
+     });
   }
 
   ionViewWillLeave() {
@@ -42,10 +46,6 @@ export class HomePage {
   ionViewWillEnter() {
     this.platform.ready().then(() => {
       this.loaded = false;
-
-      this.storage.get('language').then(language => {
-        this.language = language;
-      });
       // Show IntroPage, you can configure to show the intro once or always when the app loads.
       this.storage.get('introShown').then(result => {
         //Intro is not yet shown.

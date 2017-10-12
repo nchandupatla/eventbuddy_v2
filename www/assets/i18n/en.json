@@ -11,13 +11,13 @@
 
   "SWIPE_TO_CONTINUE": "Swipe to Continue",
   "APP_APP_AWAY": "App App and Away!",
-  "WELCOME_TO_JETPACK": "Welcome to Event Buddy",
-  "Event Buddy_ULTIMATE": "Event Buddy is the Ultimate Event Management App",
+  "WELCOME_TO_JETPACK": "Welcome to Jetpack",
+  "JETPACK_ULTIMATE": "Jetpack is the Ultimate Ionic 3 Starter",
   "BEAUTIFULLY_CRAFTED": "Beautifully Crafted",
   "QUALITY_TESTED": "Quality tested for today's modern app standards",
   "LOTS_FEATURES": "Lots of Features",
   "JUMPSTART_MODERN": "To jumpstart your various modern app requirements",
-  "BUILD_WITH_Event Buddy": "Build with Event Buddy",
+  "BUILD_WITH_JETPACK": "Build with Jetpack",
   "LAUNCH_DREAMAPP": "Launch your dream mobile app today!",
 
   "LOGIN_FACEBOOK_ERROR": "Sorry, an error occured logging you in with Facebook.",
@@ -55,7 +55,7 @@
   "THANK_YOU_REGISTERING": "Thank you for registering",
   "EMAIL_CONFIRMATION_SENT": "An email confirmation has been sent to:",
   "EMAIL_CONFIRMATION_SENT_ONCE_ONLINE": "An email confirmation will be sent to your email once you go online.",
-  "ONCE_VERIFIED": "Once you've verified your account, you'll be able to start and enjoy Event Buddy",
+  "ONCE_VERIFIED": "Once you've verified your account, you'll be able to start and enjoy Jetpack",
   "RESEND_VERIFICATION": "Resend Verification",
 
   "SET_LANGUAGE": "Set Language",

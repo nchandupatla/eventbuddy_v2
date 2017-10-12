@@ -11,3 +11,4 @@ export { StorageProvider } from './storage';
 export { TranslateProvider } from './translate';
 
 export { UsersApi } from './api/users';
+export { GroupsApi } from './api/groups';

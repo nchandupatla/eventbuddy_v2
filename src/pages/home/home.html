@@ -1,13 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon left name='menu'></ion-icon>
+      Event Buddy
+    </button>
+  </ion-navbar>
+</ion-header>
 <ion-content>
+  <ion-fab top right edge>
+    <button ion-fab (click)="navCtrl.push('AddGroupPage')"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-card *ngFor="let group of groupList">
+    <ion-card-header>
+     {{group.name}}
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Add card content here! -->
+    </ion-card-content>
+  </ion-card>
   <!-- <ion-fab top left *ngIf="loaded">
     <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == 'en'">
     <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == 'es'">
   </ion-fab> -->
-   <div class="top" text-center>
+  <!-- <div class="top" text-center>
     <img src="assets/images/groups.jpg">
-  </div> 
+  </div>  -->
 
-  <div class="bottom" text-center *ngIf="loaded">
+  <!-- <div class="bottom" text-center *ngIf="loaded">
     <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">
       <ion-icon name="md-settings"></ion-icon>
       {{ 'SET_LANGUAGE' | translate }}
@@ -24,6 +44,8 @@
       <ion-icon name="md-exit"></ion-icon>
       {{ 'LOGOUT' | translate }}
     </button>
-  </div> 
-
+  </div>  -->
 </ion-content>
+<ion-footer>
+
+</ion-footer>

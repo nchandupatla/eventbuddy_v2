@@ -1,4 +1,5 @@
-<ion-content>
+
+<ion-content >
   <ion-fab top right *ngIf="mode == 'home'">
     <button ion-fab color="steel" (click)="goToIntro()"><ion-icon name="md-help"></ion-icon></button>
   </ion-fab>
@@ -22,10 +23,6 @@
       <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="loginWithGoogle()">
         <ion-icon name="logo-google"></ion-icon>
         {{ 'CONTINUE_WITH_GOOGLE' | translate }}
-      </button>
-      <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="loginWithTwitter()">
-        <ion-icon name="logo-twitter"></ion-icon>
-        {{ 'CONTINUE_WITH_TWITTER' | translate }}
       </button>
       <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="showSignup()">
         <ion-icon name="md-mail-open"></ion-icon>
