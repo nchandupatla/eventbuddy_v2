@@ -8,15 +8,15 @@
 </ion-header>
 <ion-content>
   <ion-fab top right edge>
-    <button ion-fab (click)="navCtrl.push('AddGroupPage')"><ion-icon name="add"></ion-icon></button>
+    <button color="light" ion-fab (click)="navCtrl.push('AddGroupPage')"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
   <ion-card *ngFor="let group of groupList">
-    <ion-card-header>
-     {{group.name}}
+    <ion-card-header (click)="navToDetails(group)">
+     <a>{{group.name}}</a>
     </ion-card-header>
     <ion-card-content>
-      <!-- Add card content here! -->
+     {{group.details}}
     </ion-card-content>
   </ion-card>
   <!-- <ion-fab top left *ngIf="loaded">

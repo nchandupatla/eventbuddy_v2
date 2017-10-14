@@ -19,7 +19,7 @@
 
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-input type="text" formControlName="groupName" placeholder="Group Name"></ion-input>
+        <ion-input type="text" formControlName="groupName"></ion-input>
       </ion-item>
       <p *ngIf="addGroupForm.controls.groupName.hasError('required') && addGroupForm.controls.groupName.touched">
         Group name is required
@@ -27,6 +27,17 @@
       <p *ngIf="!addGroupForm.controls.groupName.valid && !addGroupForm.controls.groupName.hasError('required') && addGroupForm.controls.groupName.touched">
         Group name is required
       </p>
+
+      <ion-item>
+          <ion-label>Description</ion-label>
+          <ion-textarea formControlName="groupDetails"></ion-textarea>
+        </ion-item>
+        <p *ngIf="addGroupForm.controls.groupDetails.hasError('required') && addGroupForm.controls.groupDetails.touched">
+            Description is required
+        </p>
+        <p *ngIf="!addGroupForm.controls.groupDetails.valid && !addGroupForm.controls.groupName.hasError('required') && addGroupForm.controls.groupDetails.touched">
+            Description is required
+        </p>
   
 
     </ion-list>

@@ -39427,6 +39427,19 @@ ion-navbar.toolbar {
   animation-iteration-count: infinite;
 }
 
+page-add-group ion-item {
+  background: rgba(255, 255, 255, 0.8) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 4px !important;
+  margin-bottom: 0.8rem !important;
+  color: #F35B67 !important;
+}
+
+page-add-group button {
+  background-color: #F35B67 !important;
+}
+
 page-complete-profile img {
   -o-object-fit: cover;
   object-fit: cover;
@@ -39477,6 +39490,10 @@ page-home ion-fab {
 page-home ion-fab img {
   width: 56px;
   height: 56px;
+}
+
+page-home a {
+  color: #F35B67 !important;
 }
 
 page-home .ion-icon-menu {

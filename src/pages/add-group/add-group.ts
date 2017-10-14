@@ -27,7 +27,8 @@ export class AddGroupPage {
     private databaseProvider:DatabaseProvider ) {
      // this.databaseProvider.getGroups();
       this.addGroupForm = this.formBuilder.group({
-        groupName: ['', this.nameValidator]
+        groupName: ['', this.nameValidator],
+        groupDetails: ['', this.nameValidator]
       });
   }
 
@@ -36,7 +37,10 @@ export class AddGroupPage {
   }
 
   add(){
-   this.group={'name':this.addGroupForm.value['groupName']};
+   this.group={
+     'name':this.addGroupForm.value['groupName'],
+     'details':this.addGroupForm.value['groupDetails']
+  };
     this.databaseProvider.addGroup(this.group).then(() => {
       this.navCtrl.setRoot('HomePage');
     })

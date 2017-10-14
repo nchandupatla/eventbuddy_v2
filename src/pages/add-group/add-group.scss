@@ -1,3 +1,14 @@
 page-add-group {
+    ion-item {
+        background: rgba(255, 255, 255, 0.8) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        border-radius: 4px !important;
+        margin-bottom: 0.8rem !important;
+        color: color($colors, robust) !important;
+      }
 
+      button{
+        background-color: color($colors, robust) !important;
+      }
 }

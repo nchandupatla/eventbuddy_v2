@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { AuthConfig } from '../../configs/auth-config';
 import { AlertProvider, AuthProvider, DatabaseProvider, NetworkProvider, NotificationProvider, LoadingProvider, TranslateProvider, UsersApi } from '../../providers';
 import * as firebase from 'firebase';
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -33,14 +34,16 @@ export class HomePage {
      this.database.getGroups().subscribe((groups: any) => {
        this.groupList=groups;
      });
+
   }
 
   ionViewWillLeave() {
     this.loading.hide();
   }
 
-  toggleMenu(){
-
+  navToDetails(group){
+    console.log('grp id '+JSON.stringify(group));
+    this.navCtrl.push('GroupDetailsPage',{'id': group.$key})
   }
 
   ionViewWillEnter() {
