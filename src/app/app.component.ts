@@ -14,7 +14,6 @@ import { User } from '../models/user';
 })
 export class MyApp {
   rootPage: any = 'HomePage';
-  usersApi:any;
   user: User;
   userEmail:string;
   @ViewChild('nav') nav: NavController;
@@ -24,7 +23,7 @@ export class MyApp {
     splashScreen: SplashScreen,
     translateService: TranslateService,
     private translateProvider: TranslateProvider,
-    usersApi: UsersApi,
+    private usersApi: UsersApi,
     private auth: AuthProvider,
     private menuCtrl: MenuController,
     storage: Storage,
@@ -38,6 +37,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       this.menuCtrl=menuCtrl;
+      console.log('fsdf '+JSON.stringify(this.usersApi.getCurrentUser()));
       this.auth.getUser().then((user: firebase.User) => {
         if(user){
           this.userEmail=user.email;

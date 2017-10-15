@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 1035:
+/***/ 1033:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CompleteProfileModule", function() { return CompleteProfileModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__complete_profile__ = __webpack_require__(1045);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__complete_profile__ = __webpack_require__(1043);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +44,7 @@ CompleteProfileModule = __decorate([
 
 /***/ }),
 
-/***/ 1043:
+/***/ 1041:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66,19 +66,19 @@ var User = (function () {
 
 /***/ }),
 
-/***/ 1045:
+/***/ 1043:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompleteProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user__ = __webpack_require__(1043);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user__ = __webpack_require__(1041);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_keyboard__ = __webpack_require__(604);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__configs_auth_config__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__configs_auth_config__ = __webpack_require__(238);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -288,7 +288,7 @@ var CompleteProfilePage = (function () {
 CompleteProfilePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-complete-profile',template:/*ion-inline-start:"C:\workspace\eventbuddy_v2\src\pages\complete-profile\complete-profile.html"*/'<ion-content text-center>\n  <form [formGroup]="profileForm" (keydown)="keyDownFunction($event)">\n    <img src="{{user.profilePic || \'assets/images/profile.png\'}}" *ngIf="user && network.online()" margin-bottom (click)="setProfilePic()">\n    <img src="{{user.profilePic || \'assets/images/profile.png\'}}" *ngIf="user && !network.online()" margin-bottom style="opacity: 0.6">\n    <ion-list no-margin no-padding>\n      <ion-item no-lines>\n        <ion-input type="text" formControlName="firstName" placeholder="{{ \'ENTER_FIRST_NAME\' | translate }}"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.firstName.hasError(\'required\') && profileForm.controls.firstName.touched">{{ \'PLEASE_ENTER_FIRST_NAME\' | translate }}</p>\n      <p *ngIf="!profileForm.controls.firstName.valid && !profileForm.controls.firstName.hasError(\'required\') && profileForm.controls.firstName.touched">{{ \'PLEASE_ENTER_FIRST_NAME\' | translate }}</p>\n      <ion-item no-lines>\n        <ion-input type="text" formControlName="lastName" placeholder="{{ \'ENTER_LAST_NAME\' | translate }}"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.lastName.hasError(\'required\') && profileForm.controls.lastName.touched">{{ \'PLEASE_ENTER_LAST_NAME\' | translate }}</p>\n      <p *ngIf="!profileForm.controls.lastName.valid && !profileForm.controls.lastName.hasError(\'required\') && profileForm.controls.lastName.touched">{{ \'PLEASE_ENTER_LAST_NAME\' | translate }}</p>\n      <ion-item no-lines>\n        <ion-input type="email" formControlName="email" placeholder="{{ \'ENTER_EMAIL\' | translate }}"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.email.hasError(\'required\') && profileForm.controls.email.touched">{{ \'PLEASE_ENTER_EMAIL\' | translate }}</p>\n      <p *ngIf="!profileForm.controls.email.valid && !profileForm.controls.email.hasError(\'required\') && profileForm.controls.email.touched">{{ \'PLEASE_ENTER_VALID_EMAIL\' | translate }}</p>\n\n      <ion-item no-lines>\n        <ion-input type="phone" formControlName="phone" placeholder="Phone Number"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.phone.hasError(\'required\') && profileForm.controls.phone.touched">Please Enter Phone Number</p>\n      <p *ngIf="!profileForm.controls.phone.valid && !profileForm.controls.phone.hasError(\'required\') && profileForm.controls.phone.touched">Please Enter Phone Number</p>\n\n\n      <button ion-button icon-left color="robust" (click)="completeProfile()" no-margin no-padding margin-top [disabled]="!network.online() || !profileForm.valid">\n        <ion-icon name="md-checkmark-circle"></ion-icon>{{ \'COMPLETE_PROFILE\' | translate }}\n      </button>\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"C:\workspace\eventbuddy_v2\src\pages\complete-profile\complete-profile.html"*/,
+        selector: 'page-complete-profile',template:/*ion-inline-start:"C:\workspace\eventbuddy_v3\src\pages\complete-profile\complete-profile.html"*/'<ion-content text-center>\n\n  <form [formGroup]="profileForm" (keydown)="keyDownFunction($event)">\n\n    <img src="{{user.profilePic || \'assets/images/profile.png\'}}" *ngIf="user && network.online()" margin-bottom (click)="setProfilePic()">\n\n    <img src="{{user.profilePic || \'assets/images/profile.png\'}}" *ngIf="user && !network.online()" margin-bottom style="opacity: 0.6">\n\n    <ion-list no-margin no-padding>\n\n      <ion-item no-lines>\n\n        <ion-input type="text" formControlName="firstName" placeholder="{{ \'ENTER_FIRST_NAME\' | translate }}"></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="profileForm.controls.firstName.hasError(\'required\') && profileForm.controls.firstName.touched">{{ \'PLEASE_ENTER_FIRST_NAME\' | translate }}</p>\n\n      <p *ngIf="!profileForm.controls.firstName.valid && !profileForm.controls.firstName.hasError(\'required\') && profileForm.controls.firstName.touched">{{ \'PLEASE_ENTER_FIRST_NAME\' | translate }}</p>\n\n      <ion-item no-lines>\n\n        <ion-input type="text" formControlName="lastName" placeholder="{{ \'ENTER_LAST_NAME\' | translate }}"></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="profileForm.controls.lastName.hasError(\'required\') && profileForm.controls.lastName.touched">{{ \'PLEASE_ENTER_LAST_NAME\' | translate }}</p>\n\n      <p *ngIf="!profileForm.controls.lastName.valid && !profileForm.controls.lastName.hasError(\'required\') && profileForm.controls.lastName.touched">{{ \'PLEASE_ENTER_LAST_NAME\' | translate }}</p>\n\n      <ion-item no-lines>\n\n        <ion-input type="email" formControlName="email" placeholder="{{ \'ENTER_EMAIL\' | translate }}"></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="profileForm.controls.email.hasError(\'required\') && profileForm.controls.email.touched">{{ \'PLEASE_ENTER_EMAIL\' | translate }}</p>\n\n      <p *ngIf="!profileForm.controls.email.valid && !profileForm.controls.email.hasError(\'required\') && profileForm.controls.email.touched">{{ \'PLEASE_ENTER_VALID_EMAIL\' | translate }}</p>\n\n\n\n      <ion-item no-lines>\n\n        <ion-input type="phone" formControlName="phone" placeholder="Phone Number"></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="profileForm.controls.phone.hasError(\'required\') && profileForm.controls.phone.touched">Please Enter Phone Number</p>\n\n      <p *ngIf="!profileForm.controls.phone.valid && !profileForm.controls.phone.hasError(\'required\') && profileForm.controls.phone.touched">Please Enter Phone Number</p>\n\n\n\n\n\n      <button ion-button icon-left color="robust" (click)="completeProfile()" no-margin no-padding margin-top [disabled]="!network.online() || !profileForm.valid">\n\n        <ion-icon name="md-checkmark-circle"></ion-icon>{{ \'COMPLETE_PROFILE\' | translate }}\n\n      </button>\n\n    </ion-list>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\workspace\eventbuddy_v3\src\pages\complete-profile\complete-profile.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],

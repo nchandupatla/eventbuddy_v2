@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 1042:
+/***/ 1040:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationPageModule", function() { return VerificationPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verification__ = __webpack_require__(1052);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verification__ = __webpack_require__(1050);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,15 +44,15 @@ VerificationPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1052:
+/***/ 1050:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerificationPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_toast_config__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_toast_config__ = __webpack_require__(239);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,7 +132,7 @@ var VerificationPage = (function () {
 VerificationPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-verification',template:/*ion-inline-start:"C:\workspace\eventbuddy_v2\src\pages\verification\verification.html"*/'<ion-content class="no-scroll">\n  <div text-center>\n    <img src="assets/images/logo.png"/>\n    <p>{{ \'THANK_YOU_REGISTERING\' | translate }}</p>\n    <p *ngIf="emailSent">{{ \'EMAIL_CONFIRMATION_SENT\' | translate }} <span *ngIf="user">{{user.email}}</span></p>\n    <p *ngIf="!emailSent">{{ \'EMAIL_CONFIRMATION_SENT_ONCE_ONLINE\' | translate }}</p>\n    <p>{{ \'ONCE_VERIFIED\' | translate }}</p>\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="sendEmailVerification()">\n      <ion-icon name="md-mail"></ion-icon>\n      {{ \'RESEND_VERIFICATION\' | translate }}\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\workspace\eventbuddy_v2\src\pages\verification\verification.html"*/,
+        selector: 'page-verification',template:/*ion-inline-start:"C:\workspace\eventbuddy_v3\src\pages\verification\verification.html"*/'<ion-content class="no-scroll">\n\n  <div text-center>\n\n    <img src="assets/images/logo.png"/>\n\n    <p>{{ \'THANK_YOU_REGISTERING\' | translate }}</p>\n\n    <p *ngIf="emailSent">{{ \'EMAIL_CONFIRMATION_SENT\' | translate }} <span *ngIf="user">{{user.email}}</span></p>\n\n    <p *ngIf="!emailSent">{{ \'EMAIL_CONFIRMATION_SENT_ONCE_ONLINE\' | translate }}</p>\n\n    <p>{{ \'ONCE_VERIFIED\' | translate }}</p>\n\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="sendEmailVerification()">\n\n      <ion-icon name="md-mail"></ion-icon>\n\n      {{ \'RESEND_VERIFICATION\' | translate }}\n\n    </button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\workspace\eventbuddy_v3\src\pages\verification\verification.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],

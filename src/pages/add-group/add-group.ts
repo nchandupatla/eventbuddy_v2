@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {  DatabaseProvider } from '../../providers';
+import {  DatabaseProvider, UsersApi } from '../../providers';
 import { FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 
 /**
@@ -24,7 +24,8 @@ export class AddGroupPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private formBuilder: FormBuilder,
-    private databaseProvider:DatabaseProvider ) {
+    private databaseProvider:DatabaseProvider,
+    private usersApi:UsersApi ) {
      // this.databaseProvider.getGroups();
       this.addGroupForm = this.formBuilder.group({
         groupName: ['', this.nameValidator],
@@ -39,7 +40,8 @@ export class AddGroupPage {
   add(){
    this.group={
      'name':this.addGroupForm.value['groupName'],
-     'details':this.addGroupForm.value['groupDetails']
+     'details':this.addGroupForm.value['groupDetails'],
+     'userId':this.usersApi.getCurrentUser().userId
   };
     this.databaseProvider.addGroup(this.group).then(() => {
       this.navCtrl.setRoot('HomePage');

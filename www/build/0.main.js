@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 1040:
+/***/ 1038:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,9 +8,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendPushPageModule", function() { return SendPushPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__send_push__ = __webpack_require__(1050);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__ = __webpack_require__(1053);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__send_push__ = __webpack_require__(1048);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pipes_pipes_module__ = __webpack_require__(1051);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,15 +47,15 @@ SendPushPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1050:
+/***/ 1048:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SendPushPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_toast_config__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_toast_config__ = __webpack_require__(239);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -131,7 +131,7 @@ var SendPushPage = (function () {
 SendPushPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-send-push',template:/*ion-inline-start:"C:\workspace\eventbuddy_v2\src\pages\send-push\send-push.html"*/'<ion-header color="primary">\n  <ion-navbar hideBackButton="true">\n    <ion-buttons>\n      <button ion-button tappable (click)="navCtrl.pop()">{{ \'BACK\' | translate }}</button>\n    </ion-buttons>\n    <ion-title>{{ \'SEND_PUSH_NOTIFICATION\' | translate }}</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor="let user of users | usersFilter: excludedIds">\n      <ion-thumbnail item-left>\n        <img src="{{user.profilePic}}" (load)="imageLoadedMap.set(user.userId, true);" [ngClass]="{\'img-loaded\':imageLoadedMap.get(user.userId)}" [hidden]="!imageLoadedMap.get(user.userId)">\n        <!-- Loading indicator when photo is not yet loaded. -->\n        <ion-spinner name="circles" [ngClass]="{\'center\':true}" *ngIf="!imageLoadedMap.get(user.userId)"></ion-spinner>\n      </ion-thumbnail>\n      <h2>{{user.firstName}} {{user.lastName}}</h2>\n      <p>Push: <b *ngIf="user.pushToken != \'\'">{{ \'AVAILABLE\' | translate }}</b> <b *ngIf="user.pushToken == \'\'">{{ \'NOT_AVAILABLE\' | translate }}</b></p>\n      <button ion-button clear item-right *ngIf="user.pushToken != \'\'" [disabled]="!network.online()"><ion-icon name="md-notifications" (click)="sendPushNotification(user.pushToken)"></ion-icon></button>\n      <button ion-button clear item-right *ngIf="user.pushToken == \'\'" disabled><ion-icon name="md-notifications-off"></ion-icon></button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\workspace\eventbuddy_v2\src\pages\send-push\send-push.html"*/
+        selector: 'page-send-push',template:/*ion-inline-start:"C:\workspace\eventbuddy_v3\src\pages\send-push\send-push.html"*/'<ion-header color="primary">\n\n  <ion-navbar hideBackButton="true">\n\n    <ion-buttons>\n\n      <button ion-button tappable (click)="navCtrl.pop()">{{ \'BACK\' | translate }}</button>\n\n    </ion-buttons>\n\n    <ion-title>{{ \'SEND_PUSH_NOTIFICATION\' | translate }}</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-item *ngFor="let user of users | usersFilter: excludedIds">\n\n      <ion-thumbnail item-left>\n\n        <img src="{{user.profilePic}}" (load)="imageLoadedMap.set(user.userId, true);" [ngClass]="{\'img-loaded\':imageLoadedMap.get(user.userId)}" [hidden]="!imageLoadedMap.get(user.userId)">\n\n        <!-- Loading indicator when photo is not yet loaded. -->\n\n        <ion-spinner name="circles" [ngClass]="{\'center\':true}" *ngIf="!imageLoadedMap.get(user.userId)"></ion-spinner>\n\n      </ion-thumbnail>\n\n      <h2>{{user.firstName}} {{user.lastName}}</h2>\n\n      <p>Push: <b *ngIf="user.pushToken != \'\'">{{ \'AVAILABLE\' | translate }}</b> <b *ngIf="user.pushToken == \'\'">{{ \'NOT_AVAILABLE\' | translate }}</b></p>\n\n      <button ion-button clear item-right *ngIf="user.pushToken != \'\'" [disabled]="!network.online()"><ion-icon name="md-notifications" (click)="sendPushNotification(user.pushToken)"></ion-icon></button>\n\n      <button ion-button clear item-right *ngIf="user.pushToken == \'\'" disabled><ion-icon name="md-notifications-off"></ion-icon></button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\workspace\eventbuddy_v3\src\pages\send-push\send-push.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
@@ -149,13 +149,13 @@ SendPushPage = __decorate([
 
 /***/ }),
 
-/***/ 1053:
+/***/ 1051:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(1054);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(1052);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -185,7 +185,7 @@ PipesModule = __decorate([
 
 /***/ }),
 
-/***/ 1054:
+/***/ 1052:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

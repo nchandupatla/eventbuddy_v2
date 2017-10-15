@@ -1,6 +1,6 @@
 webpackJsonp([6],{
 
-/***/ 1037:
+/***/ 1035:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home__ = __webpack_require__(1047);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home__ = __webpack_require__(1045);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,16 +44,16 @@ HomePageModule = __decorate([
 
 /***/ }),
 
-/***/ 1047:
+/***/ 1045:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_auth_config__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_auth_config__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers__ = __webpack_require__(99);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -217,7 +217,7 @@ var HomePage = (function () {
 HomePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\workspace\eventbuddy_v2\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle icon-only>\n      <ion-icon left name=\'menu\'></ion-icon>\n      Event Buddy\n    </button>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-fab top right edge>\n    <button color="light" ion-fab (click)="navCtrl.push(\'AddGroupPage\')"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n\n  <ion-card *ngFor="let group of groupList">\n    <ion-card-header (click)="navToDetails(group)">\n     <a>{{group.name}}</a>\n    </ion-card-header>\n    <ion-card-content>\n     {{group.details}}\n    </ion-card-content>\n  </ion-card>\n  <!-- <ion-fab top left *ngIf="loaded">\n    <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == \'en\'">\n    <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == \'es\'">\n  </ion-fab> -->\n  <!-- <div class="top" text-center>\n    <img src="assets/images/groups.jpg">\n  </div>  -->\n\n  <!-- <div class="bottom" text-center *ngIf="loaded">\n    <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">\n      <ion-icon name="md-settings"></ion-icon>\n      {{ \'SET_LANGUAGE\' | translate }}\n    </button>\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="navCtrl.push(\'UpdateProfilePage\')">\n      <ion-icon name="md-clipboard"></ion-icon>\n      {{ \'UPDATE_PROFILE\' | translate }}\n    </button>\n    <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="navCtrl.push(\'SendPushPage\')">\n      <ion-icon name="md-mail"></ion-icon>\n      {{ \'SEND_PUSH_NOTIFICATION\' | translate }}\n    </button>\n    <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="logout()">\n      <ion-icon name="md-exit"></ion-icon>\n      {{ \'LOGOUT\' | translate }}\n    </button>\n  </div>  -->\n</ion-content>\n<ion-footer>\n\n</ion-footer>\n'/*ion-inline-end:"C:\workspace\eventbuddy_v2\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"C:\workspace\eventbuddy_v3\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle icon-only>\n\n      <ion-icon left name=\'menu\'></ion-icon>\n\n      Event Buddy\n\n    </button>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-fab top right edge>\n\n    <button color="light" ion-fab (click)="navCtrl.push(\'AddGroupPage\')"><ion-icon name="add"></ion-icon></button>\n\n  </ion-fab>\n\n\n\n  <ion-card *ngFor="let group of groupList">\n\n    <ion-card-header (click)="navToDetails(group)">\n\n     <a>{{group.name}}</a>\n\n    </ion-card-header>\n\n    <ion-card-content>\n\n     {{group.details}}\n\n    </ion-card-content>\n\n  </ion-card>\n\n  <!-- <ion-fab top left *ngIf="loaded">\n\n    <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == \'en\'">\n\n    <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == \'es\'">\n\n  </ion-fab> -->\n\n  <!-- <div class="top" text-center>\n\n    <img src="assets/images/groups.jpg">\n\n  </div>  -->\n\n\n\n  <!-- <div class="bottom" text-center *ngIf="loaded">\n\n    <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">\n\n      <ion-icon name="md-settings"></ion-icon>\n\n      {{ \'SET_LANGUAGE\' | translate }}\n\n    </button>\n\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="navCtrl.push(\'UpdateProfilePage\')">\n\n      <ion-icon name="md-clipboard"></ion-icon>\n\n      {{ \'UPDATE_PROFILE\' | translate }}\n\n    </button>\n\n    <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="navCtrl.push(\'SendPushPage\')">\n\n      <ion-icon name="md-mail"></ion-icon>\n\n      {{ \'SEND_PUSH_NOTIFICATION\' | translate }}\n\n    </button>\n\n    <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="logout()">\n\n      <ion-icon name="md-exit"></ion-icon>\n\n      {{ \'LOGOUT\' | translate }}\n\n    </button>\n\n  </div>  -->\n\n</ion-content>\n\n<ion-footer>\n\n\n\n</ion-footer>\n\n'/*ion-inline-end:"C:\workspace\eventbuddy_v3\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
