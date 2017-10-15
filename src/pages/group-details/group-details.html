@@ -7,12 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{groupDetails.name}}</ion-title>
+    <ion-title>{{groupDetails.name | uppercase}}</ion-title>
   </ion-navbar>
-
+  
 </ion-header>
-
-
 <ion-content padding>
-
+    <p>Owner:{{groupDetails.owner}}</p>
+    <p>Member(s):{{noOfMembers}} </p>
+    <p>Created On: {{groupDetails.date |  date :'short'}}</p>
+    <p>Details:{{groupDetails.details}}</p>
+  <button class="joinbtn" [hidden]="isMember" ion-button full (click)="joinGroup()">JOIN THIS GROUP</button>
 </ion-content>

@@ -39483,6 +39483,10 @@ page-complete-profile ion-item {
   color: #F35B67 !important;
 }
 
+page-group-details .joinbtn {
+  background-color: blue !important;
+}
+
 page-home ion-fab {
   margin-top: 3vh;
 }

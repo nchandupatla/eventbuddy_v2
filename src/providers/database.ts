@@ -58,6 +58,12 @@ export class DatabaseProvider {
     });
   }
 
+  public updateGroupMember(groupId: any, member:any): void {
+    this.database.object('groups/' + groupId).update({
+      'members': member
+    });
+  }
+
 
   public addGroup(group: any): Promise<any> {
     return new Promise((resolve, reject) => {

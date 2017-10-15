@@ -38,10 +38,14 @@ export class AddGroupPage {
   }
 
   add(){
+   let currentDate=new Date().toString();
    this.group={
      'name':this.addGroupForm.value['groupName'],
      'details':this.addGroupForm.value['groupDetails'],
-     'userId':this.usersApi.getCurrentUser().userId
+     'userId':this.usersApi.getCurrentUser().userId,
+     'date': currentDate,
+     'members':[{'memberId':this.usersApi.getCurrentUser().userId,
+                 'date':currentDate}]
   };
     this.databaseProvider.addGroup(this.group).then(() => {
       this.navCtrl.setRoot('HomePage');
