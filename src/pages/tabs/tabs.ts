@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
-import {HomePage} from '../home/home';
-
 /**
  * Generated class for the TabsPage page.
  *
@@ -19,5 +17,6 @@ export class TabsPage {
 
 tab1Root = "HomePage"; 
 tab2Root = "UpdateProfilePage";
+tab3Root = "GroupSearchPage";
 
 }

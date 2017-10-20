@@ -5,11 +5,11 @@ webpackJsonp([3],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationPageModule", function() { return VerificationPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateProfilePageModule", function() { return UpdateProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verification__ = __webpack_require__(1052);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__update_profile__ = __webpack_require__(1053);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,39 +20,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var VerificationPageModule = (function () {
-    function VerificationPageModule() {
+var UpdateProfilePageModule = (function () {
+    function UpdateProfilePageModule() {
     }
-    return VerificationPageModule;
+    return UpdateProfilePageModule;
 }());
-VerificationPageModule = __decorate([
+UpdateProfilePageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_3__verification__["a" /* VerificationPage */],
+            __WEBPACK_IMPORTED_MODULE_3__update_profile__["a" /* UpdateProfilePage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__verification__["a" /* VerificationPage */]),
-            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["a" /* TranslateModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__verification__["a" /* VerificationPage */])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__update_profile__["a" /* UpdateProfilePage */]),
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["a" /* TranslateModule */].forChild()
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_3__verification__["a" /* VerificationPage */]
+            __WEBPACK_IMPORTED_MODULE_3__update_profile__["a" /* UpdateProfilePage */]
         ]
     })
-], VerificationPageModule);
+], UpdateProfilePageModule);
 
-//# sourceMappingURL=verification.module.js.map
+//# sourceMappingURL=update-profile.module.js.map
 
 /***/ }),
 
-/***/ 1052:
+/***/ 1053:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerificationPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UpdateProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_toast_config__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__ = __webpack_require__(240);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,85 +68,186 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var VerificationPage = (function () {
-    function VerificationPage(navCtrl, navParams, auth, toast, network, loading, alert, translate) {
-        var _this = this;
+
+
+var UpdateProfilePage = (function () {
+    function UpdateProfilePage(navCtrl, navParams, auth, network, database, loading, storage, alert, translate, usersApi, formBuilder, keyboard, camera, actionSheetCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.auth = auth;
-        this.toast = toast;
         this.network = network;
+        this.database = database;
         this.loading = loading;
+        this.storage = storage;
         this.alert = alert;
         this.translate = translate;
-        this.subscription = this.network.subscription.subscribe(function (connected) {
-            //Check if verification email is not sent for the first time and resend it when the user goes online.
-            //It might not be sent successfully when the view is loaded and an internet connection is not available.
-            if (connected && !_this.emailSent) {
-                var self = _this;
-                setTimeout(function () {
-                    self.sendEmailVerification();
-                }, 1000);
-            }
+        this.usersApi = usersApi;
+        this.formBuilder = formBuilder;
+        this.keyboard = keyboard;
+        this.camera = camera;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.nameValidator = __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].compose([
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required
+        ]);
+        this.emailValidator = __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].compose([
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required,
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].email
+        ]);
+        this.phoneValidator = __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].compose([
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* Validators */].required,
+        ]);
+        this.defaultImg = 'assets/images/profile.png';
+        this.profileForm = this.formBuilder.group({
+            firstName: ['', this.nameValidator],
+            lastName: ['', this.nameValidator],
+            email: ['', this.emailValidator],
+            phone: ['', this.phoneValidator]
         });
+        this.profileForm.get('email').disable();
     }
-    VerificationPage.prototype.ionViewDidLoad = function () {
-        this.sendEmailVerification();
-        var self = this;
-        //Create an interval every second to check if the user has already verified their email.
-        var interval = window.setInterval(function () {
-            if (self.user) {
-                self.user.reload();
-                //User already verified their email, proceed to CompleteProfilePage.
-                if (self.user.emailVerified) {
-                    window.clearInterval(interval);
-                    self.subscription.unsubscribe();
-                    self.alert.showAlert(self.translate.get('EMAIL_VERIFIED'), self.translate.get('VERIFIED_MESSAGE'), self.translate.get('OK')).then(function () {
-                        if (self.user.providerData[0].providerId != 'twitter.com')
-                            self.navCtrl.setRoot('CompleteProfilePage');
-                        else
-                            self.navCtrl.setRoot('HomePage');
-                    });
-                }
-            }
-        }, 1000);
-    };
-    //Send verification email to user authenticated on Firebase.
-    VerificationPage.prototype.sendEmailVerification = function () {
+    UpdateProfilePage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.loading.show();
         this.auth.getUser().then(function (user) {
-            _this.user = user;
-            if (_this.user) {
-                _this.user.sendEmailVerification().then(function () {
-                    _this.emailSent = true;
-                    _this.loading.hide();
-                    _this.toast.showWithDuration(_this.translate.get('VERIFICATION_SENT'), __WEBPACK_IMPORTED_MODULE_3__configs_toast_config__["a" /* ToastConfig */].duration);
-                }).catch(function (error) {
-                    _this.loading.hide();
-                    _this.toast.showWithDuration(_this.translate.get('VERIFICATION_FAILED'), __WEBPACK_IMPORTED_MODULE_3__configs_toast_config__["a" /* ToastConfig */].duration);
+            if (!_this.subscription) {
+                //Subscribe to changes made to the user.
+                _this.subscription = _this.usersApi.subscriptions.get(user.uid).subscribe(function (user) {
+                    _this.user = user;
+                    _this.profilePic = user.profilePic;
+                    //Set values to form.
+                    _this.profileForm.setValue({
+                        firstName: _this.user.firstName,
+                        lastName: _this.user.lastName,
+                        email: _this.user.email,
+                        phone: _this.user.phone
+                    });
                 });
             }
+            _this.user = _this.usersApi.getCurrentUser();
+            _this.profilePic = _this.user.profilePic;
+            //Set values to form.
+            _this.profileForm.setValue({
+                firstName: _this.user.firstName,
+                lastName: _this.user.lastName,
+                email: _this.user.email,
+                phone: _this.user.phone
+            });
         });
     };
-    return VerificationPage;
+    UpdateProfilePage.prototype.ionViewWillLeave = function () {
+        if (this.subscription)
+            this.subscription.unsubscribe();
+    };
+    UpdateProfilePage.prototype.keyDownFunction = function (event) {
+        if (event.keyCode == 13) {
+            this.keyboard.close();
+            if (this.profileForm.valid)
+                this.updateProfile();
+        }
+    };
+    UpdateProfilePage.prototype.back = function () {
+        var _this = this;
+        if (this.user.profilePic != this.defaultImg && this.profilePic == this.defaultImg) {
+            this.storage.deleteProfilePic(this.user.userId, this.user.profilePic).then(function () {
+                _this.user.profilePic = _this.defaultImg;
+            });
+        }
+        else if (this.user.profilePic == this.defaultImg && this.profilePic != this.defaultImg) {
+            this.user.profilePic = this.profilePic;
+        }
+        this.navCtrl.pop();
+    };
+    UpdateProfilePage.prototype.updateProfile = function () {
+        var _this = this;
+        this.loading.show();
+        this.user.firstName = this.profileForm.value['firstName'];
+        this.user.lastName = this.profileForm.value['lastName'];
+        this.database.setUser(this.user).then(function () {
+            _this.loading.hide();
+            _this.profilePic = _this.user.profilePic;
+            _this.alert.showAlert(_this.translate.get('PROFILE_UPDATED'), _this.translate.get('PROFILE_UPDATED_MESSAGE'), _this.translate.get('OK')).then(function () { });
+        }).catch(function (error) {
+        });
+    };
+    UpdateProfilePage.prototype.setProfilePic = function () {
+        var _this = this;
+        this.actionSheetCtrl.create({
+            title: this.translate.get('SET_PROFILE_PICTURE'),
+            buttons: [
+                {
+                    text: this.translate.get('TAKE_A_PHOTO'),
+                    role: 'destructive',
+                    handler: function () {
+                        _this.storage.uploadProfilePic(_this.user.userId, _this.camera.PictureSourceType.CAMERA).then(function (profilePic) {
+                            if (_this.user.profilePic != _this.profilePic) {
+                                _this.storage.deleteProfilePic(_this.user.userId, _this.user.profilePic).then(function () {
+                                    _this.user.profilePic = profilePic;
+                                });
+                            }
+                            else {
+                                _this.user.profilePic = profilePic;
+                            }
+                        });
+                    }
+                },
+                {
+                    text: this.translate.get('CHOOSE_FROM_GALLERY'),
+                    handler: function () {
+                        _this.storage.uploadProfilePic(_this.user.userId, _this.camera.PictureSourceType.PHOTOLIBRARY).then(function (profilePic) {
+                            if (_this.user.profilePic != _this.profilePic) {
+                                _this.storage.deleteProfilePic(_this.user.userId, _this.user.profilePic).then(function () {
+                                    _this.user.profilePic = profilePic;
+                                });
+                            }
+                            else {
+                                _this.user.profilePic = profilePic;
+                            }
+                        });
+                    }
+                },
+                {
+                    text: this.translate.get('CANCEL'),
+                    role: 'cancel',
+                    handler: function () {
+                    }
+                }
+            ]
+        }).present();
+    };
+    UpdateProfilePage.prototype.removeProfilePic = function () {
+        var _this = this;
+        if (this.profilePic == this.defaultImg) {
+            this.storage.deleteProfilePic(this.user.userId, this.user.profilePic).then(function () {
+                _this.user.profilePic = _this.profilePic;
+            });
+        }
+        else {
+            this.user.profilePic = this.defaultImg;
+        }
+    };
+    return UpdateProfilePage;
 }());
-VerificationPage = __decorate([
+UpdateProfilePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-verification',template:/*ion-inline-start:"/Users/rashgirl/workspace/eventbuddy_v2/src/pages/verification/verification.html"*/'<ion-content class="no-scroll">\n  <div text-center>\n    <img src="assets/images/logo.png"/>\n    <p>{{ \'THANK_YOU_REGISTERING\' | translate }}</p>\n    <p *ngIf="emailSent">{{ \'EMAIL_CONFIRMATION_SENT\' | translate }} <span *ngIf="user">{{user.email}}</span></p>\n    <p *ngIf="!emailSent">{{ \'EMAIL_CONFIRMATION_SENT_ONCE_ONLINE\' | translate }}</p>\n    <p>{{ \'ONCE_VERIFIED\' | translate }}</p>\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="sendEmailVerification()">\n      <ion-icon name="md-mail"></ion-icon>\n      {{ \'RESEND_VERIFICATION\' | translate }}\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/rashgirl/workspace/eventbuddy_v2/src/pages/verification/verification.html"*/,
+        selector: 'page-update-profile',template:/*ion-inline-start:"/Users/rashgirl/workspace/eventbuddy_v2/src/pages/update-profile/update-profile.html"*/'<ion-header color="primary">\n  <ion-navbar hideBackButton="true">\n    <ion-buttons>\n      <button ion-button tappable (click)="back()">{{ \'BACK\' | translate }}</button>\n    </ion-buttons>\n    <ion-title>{{ \'UPDATE_PROFILE\' | translate }}</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-tabs>\n  <!-- Indicates with tabsPage should handle each tab here -->\n  <ion-tab [root]="tab3Root" tabTitle="Tab 3" tabIcon="cog"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Tab 2" tabIcon="chatbubbles"></ion-tab>\n  <ion-tab [root]="tab1Root" tabTitle="Tab 1" tabIcon="pulse"></ion-tab>\n</ion-tabs>\n<ion-content text-center>\n  <form [formGroup]="profileForm" (keydown)="keyDownFunction($event)">\n    <div id="avatar" *ngIf="user">\n      <button ion-fab mini color="dark" (click)="removeProfilePic()" *ngIf="user.profilePic != defaultImg && loaded"><ion-icon name="md-close"></ion-icon></button>\n      <img src="{{user.profilePic}}" *ngIf="network.online()" margin-bottom (click)="setProfilePic()" (load)="loaded = true;" [ngClass]="{\'img-loaded\':loaded}" [hidden]="!loaded">\n      <img src="{{user.profilePic}}" *ngIf="!network.online()" margin-bottom style="opacity: 0.6" (load)="loaded = true;" [ngClass]="{\'img-loaded\':loaded}" [hidden]="!loaded">\n      <!-- Loading indicator when photo is not yet loaded. -->\n      <ion-spinner name="circles" [ngClass]="{\'center\':true}" *ngIf="!loaded"></ion-spinner>\n    </div>\n    <ion-list no-margin no-padding>\n      <ion-item no-lines>\n        <ion-input type="text" formControlName="firstName" placeholder="{{ \'ENTER_FIRST_NAME\' | translate }}"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.firstName.hasError(\'required\') && profileForm.controls.firstName.touched">{{ \'PLEASE_ENTER_FIRST_NAME\' | translate }}</p>\n      <p *ngIf="!profileForm.controls.firstName.valid && !profileForm.controls.firstName.hasError(\'required\') && profileForm.controls.firstName.touched">{{ \'PLEASE_ENTER_FIRST_NAME\' | translate }}</p>\n      <ion-item no-lines>\n        <ion-input type="text" formControlName="lastName" placeholder="{{ \'ENTER_LAST_NAME\' | translate }}"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.lastName.hasError(\'required\') && profileForm.controls.lastName.touched">{{ \'PLEASE_ENTER_LAST_NAME\' | translate }}</p>\n      <p *ngIf="!profileForm.controls.lastName.valid && !profileForm.controls.lastName.hasError(\'required\') && profileForm.controls.lastName.touched">{{ \'PLEASE_ENTER_LAST_NAME\' | translate }}</p>\n      <ion-item no-lines>\n        <ion-input type="email" formControlName="email" placeholder="{{ \'ENTER_EMAIL\' | translate }}"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.email.hasError(\'required\') && profileForm.controls.email.touched">{{ \'PLEASE_ENTER_EMAIL\' | translate }}</p>\n      <p *ngIf="!profileForm.controls.email.valid && !profileForm.controls.email.hasError(\'required\') && profileForm.controls.email.touched">{{ \'PLEASE_ENTER_VALID_EMAIL\' | translate }}</p>\n     \n      <ion-item no-lines>\n        <ion-input type="phone" formControlName="phone" placeholder="Phone Number"></ion-input>\n      </ion-item>\n      <p *ngIf="profileForm.controls.phone.hasError(\'required\') && profileForm.controls.phone.touched">Please Enter Phone Number</p>\n      <p *ngIf="!profileForm.controls.phone.valid && !profileForm.controls.phone.hasError(\'required\') && profileForm.controls.phone.touched">Please Enter Phone Number</p>\n\n     \n      <button ion-button icon-left color="robust" (click)="updateProfile()" no-margin no-padding margin-top [disabled]="!network.online() || !profileForm.valid">\n        <ion-icon name="md-checkmark-circle"></ion-icon>{{ \'UPDATE_PROFILE\' | translate }}\n      </button>\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"/Users/rashgirl/workspace/eventbuddy_v2/src/pages/update-profile/update-profile.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
         __WEBPACK_IMPORTED_MODULE_2__providers__["a" /* AuthProvider */],
-        __WEBPACK_IMPORTED_MODULE_2__providers__["d" /* ToastProvider */],
         __WEBPACK_IMPORTED_MODULE_2__providers__["b" /* NetworkProvider */],
+        __WEBPACK_IMPORTED_MODULE_2__providers__["h" /* DatabaseProvider */],
         __WEBPACK_IMPORTED_MODULE_2__providers__["f" /* LoadingProvider */],
+        __WEBPACK_IMPORTED_MODULE_2__providers__["i" /* StorageProvider */],
         __WEBPACK_IMPORTED_MODULE_2__providers__["g" /* AlertProvider */],
-        __WEBPACK_IMPORTED_MODULE_2__providers__["j" /* TranslateProvider */]])
-], VerificationPage);
+        __WEBPACK_IMPORTED_MODULE_2__providers__["j" /* TranslateProvider */],
+        __WEBPACK_IMPORTED_MODULE_2__providers__["k" /* UsersApi */],
+        __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* FormBuilder */],
+        __WEBPACK_IMPORTED_MODULE_4__ionic_native_keyboard__["a" /* Keyboard */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_native_camera__["a" /* Camera */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ActionSheetController */]])
+], UpdateProfilePage);
 
-//# sourceMappingURL=verification.js.map
+//# sourceMappingURL=update-profile.js.map
 
 /***/ })
 
