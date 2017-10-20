@@ -13,7 +13,7 @@ import { User } from '../models/user';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = 'HomePage';
+  rootPage: any = "TabsPage";
   usersApi:any;
   user: User;
   userEmail:string;

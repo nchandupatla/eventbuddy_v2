@@ -1,14 +1,15 @@
 webpackJsonp([7],{
 
-/***/ 1036:
+/***/ 1035:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GroupDetailsPageModule", function() { return GroupDetailsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__group_details__ = __webpack_require__(1046);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home__ = __webpack_require__(1042);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +19,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var GroupDetailsPageModule = (function () {
-    function GroupDetailsPageModule() {
+
+var HomePageModule = (function () {
+    function HomePageModule() {
     }
-    return GroupDetailsPageModule;
+    return HomePageModule;
 }());
-GroupDetailsPageModule = __decorate([
+HomePageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__group_details__["a" /* GroupDetailsPage */],
+            __WEBPACK_IMPORTED_MODULE_3__home__["a" /* HomePage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__group_details__["a" /* GroupDetailsPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__home__["a" /* HomePage */]),
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["a" /* TranslateModule */].forChild()
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_2__group_details__["a" /* GroupDetailsPage */]
+            __WEBPACK_IMPORTED_MODULE_3__home__["a" /* HomePage */]
         ]
     })
-], GroupDetailsPageModule);
+], HomePageModule);
 
-//# sourceMappingURL=group-details.module.js.map
+//# sourceMappingURL=home.module.js.map
 
 /***/ }),
 
-/***/ 1046:
+/***/ 1042:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GroupDetailsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configs_auth_config__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers__ = __webpack_require__(99);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,39 +66,175 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the GroupDetailsPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-var GroupDetailsPage = (function () {
-    function GroupDetailsPage(navCtrl, navParams, database) {
+
+
+var HomePage = (function () {
+    function HomePage(platform, navCtrl, alertCtrl, alert, auth, database, network, notification, translate, loading, usersApi, storage, menuCtrl) {
         var _this = this;
+        this.platform = platform;
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
+        this.alert = alert;
+        this.auth = auth;
         this.database = database;
-        var id = navParams.get('id');
-        this.database.getGroupById(id).subscribe(function (groupDetails) {
-            _this.groupDetails = groupDetails;
+        this.network = network;
+        this.notification = notification;
+        this.translate = translate;
+        this.loading = loading;
+        this.usersApi = usersApi;
+        this.storage = storage;
+        this.menuCtrl = menuCtrl;
+        // this.tab1 = HomePage;
+        this.database.getGroups().subscribe(function (groups) {
+            _this.groupList = groups;
         });
     }
-    GroupDetailsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad GroupDetailsPage');
+    HomePage.prototype.ionViewWillLeave = function () {
+        this.loading.hide();
     };
-    return GroupDetailsPage;
+    HomePage.prototype.navToDetails = function (group) {
+        console.log('grp id ' + JSON.stringify(group));
+        this.navCtrl.push('GroupDetailsPage', { 'id': group.$key });
+    };
+    HomePage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        this.platform.ready().then(function () {
+            _this.loaded = false;
+            // Show IntroPage, you can configure to show the intro once or always when the app loads.
+            _this.storage.get('introShown').then(function (result) {
+                //Intro is not yet shown.
+                if (!result) {
+                    _this.storage.set('introShown', true);
+                    _this.navCtrl.setRoot('IntroPage');
+                }
+                else {
+                    _this.auth.getUser().then(function (user) {
+                        if (user) {
+                            var provider = user.providerData[0].providerId;
+                            var isTwitter_1 = provider == 'twitter.com';
+                            if (__WEBPACK_IMPORTED_MODULE_3__configs_auth_config__["a" /* AuthConfig */].emailVerification) {
+                                if (!user.emailVerified) {
+                                    if (isTwitter_1) {
+                                        _this.navCtrl.setRoot('CompleteProfilePage', { isTwitter: isTwitter_1 });
+                                    }
+                                    else {
+                                        _this.navCtrl.setRoot('VerificationPage');
+                                    }
+                                }
+                                else {
+                                    _this.database.exists('users/' + user.uid).then(function (exists) {
+                                        if (!exists) {
+                                            _this.navCtrl.setRoot('CompleteProfilePage', { isTwitter: isTwitter_1 });
+                                        }
+                                        else {
+                                            _this.notification.init();
+                                            if (_this.usersApi.loaded) {
+                                                _this.loaded = true;
+                                            }
+                                            else {
+                                                _this.usersApi.init().then(function () {
+                                                    _this.loaded = true;
+                                                });
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                            else {
+                                _this.database.exists('users/' + user.uid).then(function (exists) {
+                                    if (!exists) {
+                                        _this.navCtrl.setRoot('CompleteProfilePage', { isTwitter: isTwitter_1 });
+                                    }
+                                    else {
+                                        _this.notification.init();
+                                        if (_this.usersApi.loaded) {
+                                            _this.loaded = true;
+                                        }
+                                        else {
+                                            _this.usersApi.init().then(function () {
+                                                _this.loaded = true;
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                        else {
+                            _this.navCtrl.setRoot('LoginPage');
+                        }
+                    });
+                }
+            });
+        });
+    };
+    HomePage.prototype.logout = function () {
+        var _this = this;
+        this.alert.showConfirm(this.translate.get('CONFIRM_LOGOUT'), this.translate.get('LOGOUT_QUESTION'), this.translate.get('CANCEL'), this.translate.get('LOGOUT')).then(function (confirm) {
+            if (confirm) {
+                _this.loading.show();
+                _this.notification.destroy().then(function () {
+                    _this.auth.logout().then(function () {
+                        _this.loading.hide();
+                        _this.navCtrl.setRoot('LoginPage');
+                    });
+                });
+            }
+        });
+    };
+    HomePage.prototype.setLanguage = function () {
+        var _this = this;
+        var language;
+        this.storage.get('language').then(function (language) {
+            language = language;
+            var alert = _this.alertCtrl.create();
+            alert.setTitle(_this.translate.get('SET_LANGUAGE'));
+            alert.addInput({
+                type: 'radio',
+                label: _this.translate.get('ENGLISH'),
+                value: 'en',
+                checked: language == 'en'
+            });
+            alert.addInput({
+                type: 'radio',
+                label: _this.translate.get('SPANISH'),
+                value: 'es',
+                checked: language == 'es'
+            });
+            alert.addButton(_this.translate.get('CANCEL'));
+            alert.addButton({
+                text: _this.translate.get('OK'),
+                handler: function (data) {
+                    _this.storage.set('language', data).then(function () {
+                        window.location.reload();
+                    });
+                }
+            });
+            alert.present();
+        });
+    };
+    return HomePage;
 }());
-GroupDetailsPage = __decorate([
+HomePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'page-group-details',template:/*ion-inline-start:"C:\workspace\eventbuddy_v2\src\pages\group-details\group-details.html"*/'<!--\n  Generated template for the GroupDetailsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{groupDetails.name}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\workspace\eventbuddy_v2\src\pages\group-details\group-details.html"*/,
+        selector: 'page-home',template:/*ion-inline-start:"/Users/rashgirl/workspace/eventbuddy_v2/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle icon-only>\n      <ion-icon left name=\'menu\'></ion-icon>\n      Event Buddy\n    </button>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-fab top right edge>\n    <button color="light" ion-fab (click)="navCtrl.push(\'AddGroupPage\')"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n\n  <ion-card *ngFor="let group of groupList">\n    <ion-card-header (click)="navToDetails(group)">\n     <a>{{group.name}}</a>\n    </ion-card-header>\n    <ion-card-content>\n     {{group.details}}\n    </ion-card-content>\n  </ion-card>\n  <!-- <ion-fab top left *ngIf="loaded">\n    <img src="assets/images/en.png" tappable (click)="setLanguage()" *ngIf="language == \'en\'">\n    <img src="assets/images/es.png" tappable (click)="setLanguage()" *ngIf="language == \'es\'">\n  </ion-fab> -->\n  <!-- <div class="top" text-center>\n    <img src="assets/images/groups.jpg">\n  </div>  -->\n\n  <!-- <div class="bottom" text-center *ngIf="loaded">\n    <button ion-button icon-left color="sandy" [disabled]="!network.online()" (click)="setLanguage()">\n      <ion-icon name="md-settings"></ion-icon>\n      {{ \'SET_LANGUAGE\' | translate }}\n    </button>\n    <button ion-button icon-left color="robust" [disabled]="!network.online()" (click)="navCtrl.push(\'UpdateProfilePage\')">\n      <ion-icon name="md-clipboard"></ion-icon>\n      {{ \'UPDATE_PROFILE\' | translate }}\n    </button>\n    <button ion-button icon-left color="coral" [disabled]="!network.online()" (click)="navCtrl.push(\'SendPushPage\')">\n      <ion-icon name="md-mail"></ion-icon>\n      {{ \'SEND_PUSH_NOTIFICATION\' | translate }}\n    </button>\n    <button ion-button icon-left color="skyblue" [disabled]="!network.online()" (click)="logout()">\n      <ion-icon name="md-exit"></ion-icon>\n      {{ \'LOGOUT\' | translate }}\n    </button>\n  </div>  -->\n</ion-content>\n<ion-footer>\n\n</ion-footer>\n'/*ion-inline-end:"/Users/rashgirl/workspace/eventbuddy_v2/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2__providers__["h" /* DatabaseProvider */]])
-], GroupDetailsPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["g" /* AlertProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["h" /* DatabaseProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["b" /* NetworkProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["c" /* NotificationProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["j" /* TranslateProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["f" /* LoadingProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers__["k" /* UsersApi */],
+        __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* MenuController */]])
+], HomePage);
 
-//# sourceMappingURL=group-details.js.map
+//# sourceMappingURL=home.js.map
 
 /***/ })
 
