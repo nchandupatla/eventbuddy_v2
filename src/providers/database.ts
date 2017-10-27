@@ -75,6 +75,25 @@ export class DatabaseProvider {
     });
   }
 
+  public addGroupActivity(activity: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.database.list('/group-activity').push(activity).then(() => {
+        resolve();
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }
+
+  public getGroupActivites(groupId): FirebaseListObservable<any> {
+    return this.database.list('/group-activity', {
+      query: {
+        orderByChild: 'groupId',
+        equalTo: groupId
+      }
+    });
+  }
+
   public setPushToken(userId, token): void {
     this.database.list('/users', {
       query: {

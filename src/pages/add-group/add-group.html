@@ -29,6 +29,17 @@
       </p>
 
       <ion-item>
+          <ion-label>Location</ion-label>
+          <ion-input type="text" formControlName="groupLocation"></ion-input>
+        </ion-item>
+        <p *ngIf="addGroupForm.controls.groupLocation.hasError('required') && addGroupForm.controls.groupLocation.touched">
+          Group Location is required
+        </p>
+        <p *ngIf="!addGroupForm.controls.groupLocation.valid && !addGroupForm.controls.groupLocation.hasError('required') && addGroupForm.controls.groupLocation.touched">
+          Group Location is required
+        </p>
+
+      <ion-item>
           <ion-label>Description</ion-label>
           <ion-textarea formControlName="groupDetails"></ion-textarea>
         </ion-item>

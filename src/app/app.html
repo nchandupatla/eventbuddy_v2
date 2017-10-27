@@ -6,13 +6,16 @@
         </ion-header>
         <ion-content>
           <ion-list>
-            <button ion-item (click)="openPage(homePage)">
+            <button ion-item (click)="navPush('HomePage')" menuClose>
               Home
             </button>
+            <button ion-item (click)="navPush('AddGroupPage')" menuClose>
+                Add Group
+              </button>
             <button ion-item (click)="navPush('UpdateProfilePage')" menuClose>
               Settings
             </button>
-            <button ion-item (click)="logout()">
+            <button ion-item (click)="logout()" menuClose>
               Logout
             </button>
           </ion-list>

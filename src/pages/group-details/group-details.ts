@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 import { DatabaseProvider, UsersApi, ToastProvider } from '../../providers';
 
 /**
@@ -24,7 +24,8 @@ export class GroupDetailsPage {
     public navParams: NavParams,
     private database: DatabaseProvider,
     private usersApi:UsersApi,
-    private toastApi:ToastProvider) {
+    private toastApi:ToastProvider,
+    public alertCtrl: AlertController) {
     let id = navParams.get('id');
     this.database.getGroupById(id).subscribe((groupDetails: any) => {
       this.groupDetails=groupDetails;
@@ -43,6 +44,10 @@ export class GroupDetailsPage {
       })
       this.isMember=isMemberCheck;
     });
+
+    this.database.getGroupActivites(id).subscribe((activities: any) => {
+      console.log('activitiy '+JSON.stringify(activities));
+    })
   }
 
   ionViewDidLoad() {
@@ -54,6 +59,38 @@ export class GroupDetailsPage {
     this.groupDetails.members.push(member);
     this.database.updateGroupMember(this.groupDetails.$key,this.groupDetails.members);
     this.toastApi.show("Successfully joined this group");
+  }
+
+  showPrompt() {
+    let prompt = this.alertCtrl.create({
+      title: 'New Activity',
+      inputs: [
+        {
+          name: 'activity',
+          placeholder: 'Activity'
+        },
+        {
+          name: 'details',
+          placeholder: 'Details'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            data.groupId=this.navParams.get('id');
+            data.createdAt=new Date().toDateString();
+            this.database.addGroupActivity(data);
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
 

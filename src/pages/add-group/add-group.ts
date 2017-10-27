@@ -29,7 +29,8 @@ export class AddGroupPage {
      // this.databaseProvider.getGroups();
       this.addGroupForm = this.formBuilder.group({
         groupName: ['', this.nameValidator],
-        groupDetails: ['', this.nameValidator]
+        groupDetails: ['', this.nameValidator],
+        groupLocation: ['', this.nameValidator]
       });
   }
 
@@ -42,6 +43,7 @@ export class AddGroupPage {
    this.group={
      'name':this.addGroupForm.value['groupName'],
      'details':this.addGroupForm.value['groupDetails'],
+     'location':this.addGroupForm.value['groupLocation'],
      'userId':this.usersApi.getCurrentUser().userId,
      'date': currentDate,
      'members':[{'memberId':this.usersApi.getCurrentUser().userId,

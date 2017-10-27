@@ -12,9 +12,16 @@
   
 </ion-header>
 <ion-content padding>
+   <ion-fab top right edge>
+    <button color="light" ion-fab [hidden]="!isMember" (click)="showPrompt()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab> 
     <p>Owner:{{groupDetails.owner}}</p>
     <p>Member(s):{{noOfMembers}} </p>
     <p>Created On: {{groupDetails.date |  date :'short'}}</p>
     <p>Details:{{groupDetails.details}}</p>
-  <button class="joinbtn" [hidden]="isMember" ion-button full (click)="joinGroup()">JOIN THIS GROUP</button>
+  
+    <button class="joinbtn" [hidden]="isMember" ion-button full (click)="joinGroup()">JOIN THIS GROUP</button>
+    <!-- <button class="addActivityBtn" [hidden]="!isMember" ion-button full (click)="showPrompt()">ADD ACTIVITY</button> -->
+
 </ion-content>
+
