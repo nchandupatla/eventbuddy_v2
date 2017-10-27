@@ -1,6 +1,7 @@
 export namespace AuthConfig {
   //Auth Configuration.
   //Set to your Firebase app, you can find your credentials on Firebase app console -> Add Web App.
+  
   export const firebaseConfig = {
     apiKey: "AIzaSyBLh7tGkz6Di3piOZN9uuJOTsIpM9Klk2M",
     authDomain: "event-buddy-659b4.firebaseapp.com",

@@ -13,7 +13,7 @@ import { User } from '../models/user';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = 'HomePage';
+  rootPage: any = "HomePage";
   user: User;
   userEmail:string;
   @ViewChild('nav') nav: NavController;
