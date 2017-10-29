@@ -16,7 +16,7 @@ export class HomePage {
   private language: string;
   tab1:any;
   private groupList:any;
-
+  
   constructor(private platform: Platform,
     public navCtrl: NavController,
     public alertCtrl: AlertController,
@@ -50,14 +50,11 @@ export class HomePage {
     this.platform.ready().then(() => {
       this.loaded = false;
       // Show IntroPage, you can configure to show the intro once or always when the app loads.
-      this.storage.get('introShown').then(result => {
-        //Intro is not yet shown.
-        if (!result) {
-          this.storage.set('introShown', true);
-          this.navCtrl.setRoot('IntroPage');
-        } else {
+     // this.storage.get('introShown').then(result => {
+        
           this.auth.getUser().then((user: firebase.User) => {
             if (user) {
+              this.storage.set('userProfile',true);
               let provider = user.providerData[0].providerId;
               let isTwitter = provider == 'twitter.com';
               if (AuthConfig.emailVerification) {
@@ -103,8 +100,8 @@ export class HomePage {
               this.navCtrl.setRoot('LoginPage');
             }
           });
-        }
-      });
+        
+      
     });
   }
 
@@ -115,6 +112,7 @@ export class HomePage {
         this.notification.destroy().then(() => {
           this.auth.logout().then(() => {
             this.loading.hide();
+            this.storage.set('userProfile',false);
             this.navCtrl.setRoot('LoginPage');
           });
         });

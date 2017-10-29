@@ -144,7 +144,7 @@ export class CompleteProfilePage {
                 if (AuthConfig.emailVerification) {
                   this.navCtrl.setRoot('VerificationPage');
                 } else {
-                  this.navCtrl.setRoot('HomePage');
+                  this.navCtrl.setRoot('TabsPage');
                 }
               }).catch((error) => {
               });
@@ -159,7 +159,7 @@ export class CompleteProfilePage {
     } else {
       this.database.setUser(this.user).then(() => {
         this.loading.hide();
-        this.navCtrl.setRoot('HomePage');
+        this.navCtrl.setRoot('TabsPage');
       }).catch((error) => {
       });
     }

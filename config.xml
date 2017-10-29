@@ -1,9 +1,9 @@
- <?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <widget id="com.appdashery.jetpack" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Event Buddy</name>
     <description>Event Management Made Easy.</description>
     <author email="tinesipo@gmail.com" href="http://appdashery.com/">The Appdashery</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.0.101:8101" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -89,33 +89,36 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
-    <engine name="android" spec="^6.2.3" />
+    <allow-navigation href="http://192.168.0.101:8101" />
+    <allow-navigation href="http://192.168.0.101:8100" />
+    <engine name="android" spec="^6.3.0" />
+    <engine name="browser" spec="5.0.1" />
+    <plugin name="cordova-plugin-console" spec="^1.0.7" />
+    <plugin name="cordova-plugin-device" spec="^1.1.6" />
+    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
+    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1">
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
     </plugin>
-    <plugin name="cordova-plugin-console" spec="^1.0.7" />
-    <plugin name="cordova-plugin-crosswalk-webview" spec="^2.3.0" />
-    <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
-        <variable name="APP_ID" value="3b027547" />
-        <variable name="APP_NAME" value="eventbuddyv3" />
+        <variable name="APP_ID" value="1858294414481688" />
+        <variable name="APP_NAME" value="JetPack" />
     </plugin>
     <plugin name="cordova-plugin-file" spec="^4.3.3" />
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.249584835712-4lkrslajgb7lr368m7pa1mojjgb9te2t" />
+        <variable name="REVERSED_CLIENT_ID" value="144965795048-cf9qgur4iujpmdh046tdkba2gd6u3h5n.apps.googleusercontent.com" />
     </plugin>
     <plugin name="cordova-plugin-network-information" spec="^1.3.3" />
-    <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
-    <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
-    <plugin name="cordova-plugin-wkwebview-engine" spec="git+https://github.com/driftyco/cordova-plugin-wkwebview-engine.git" />
-    <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
-    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <plugin name="phonegap-plugin-push" spec="^1.10.5">
-        <variable name="SENDER_ID" value="249584835712" />
-    </plugin>
     <plugin name="twitter-connect-plugin" spec="^0.6.0">
-        <variable name="FABRIC_KEY" value="6d543b556dbf09cb80164b3319011fa858150e58" />
+        <variable name="FABRIC_KEY" value="6d543b556dbf09cb80164b3319011fa858150e5811" />
     </plugin>
-</widget> 
+    <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
+    <plugin name="cordova-plugin-wkwebview-engine" spec="git+https://github.com/ionic-team/cordova-plugin-wkwebview-engine.git" />
+    <plugin name="phonegap-plugin-push" spec="^1.10.5">
+        <variable name="SENDER_ID" value="24958483571211" />
+    </plugin>
+    <plugin name="cordova-plugin-crosswalk-webview" spec="^2.3.0" />
+</widget>

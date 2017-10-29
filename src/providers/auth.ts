@@ -52,21 +52,16 @@ export class AuthProvider {
     return new Promise((resolve, reject) => {
       if (this.platform.is('cordova')) {
         this.facebook.login(['public_profile', 'user_friends', 'email']).then((res: FacebookLoginResponse) => {
-          let credential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
-          this.angularfireAuth.auth.signInWithCredential(credential).then(res => {
-            console.log("Facebook Login Success: " + JSON.stringify(res));
+          firebase.auth().signInWithCredential(firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken))
+          .then( success => {
+            console.log("Firebase success: " + JSON.stringify(success));
             resolve(res);
-          }).catch((error: any) => {
-            this.toast.showError(error.code);
-            reject();
-          });
-        }).catch(error => {
-          console.error("Facebook Login Error: " + JSON.stringify(error));
-          reject(error);
-        });
+          })
+          .catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
+        }).catch(err => console.error("Error: ", err));
       } else {
         let error = "Cordova not found. Please deploy on actual device or simulator.";
-        console.error("Facebook Login Error: " + error);
+        console.error("Google Login Error: " + error);
         reject(error);
       }
     });
@@ -78,18 +73,13 @@ export class AuthProvider {
         this.googlePlus.login({
           'webClientId': AuthConfig.googleWebClientId
         }).then(res => {
-          let credential = firebase.auth.GoogleAuthProvider.credential(res.idToken, res.accessToken);
-          this.angularfireAuth.auth.signInWithCredential(credential).then(res => {
-            console.log("Google Login Success: " + JSON.stringify(res));
+          firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken,res.accessToken))
+          .then( success => {
+            console.log("Firebase success: " + JSON.stringify(success));
             resolve(res);
-          }).catch((error: any) => {
-            this.toast.showError(error.code);
-            reject();
-          });
-        }).catch(error => {
-          console.error("Google Login Error: " + JSON.stringify(error));
-          reject(error);
-        });
+          })
+          .catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
+        }).catch(err => console.error("Error: ", err));
       } else {
         let error = "Cordova not found. Please deploy on actual device or simulator.";
         console.error("Google Login Error: " + error);

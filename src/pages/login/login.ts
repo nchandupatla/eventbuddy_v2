@@ -42,6 +42,10 @@ export class LoginPage {
     private keyboard: Keyboard,
     private storage: Storage) {
 
+
+  this.storage.set('introShown', true);//Reached login=>IntoPage shown already.
+ // this.navCtrl.setRoot('HomePage');
+ 
     this.loginForm = formBuilder.group({
       email: ['', this.emailValidator],
       password: ['', this.passwordValidator]
@@ -83,14 +87,15 @@ export class LoginPage {
 
     this.auth.getUser().then((user: firebase.User) => {
       if (user) {
+        
         if (AuthConfig.emailVerification) {
           if (!user.emailVerified) {
             this.navCtrl.setRoot('VerificationPage');
           } else {
-            this.navCtrl.setRoot('HomePage');
+            this.navCtrl.setRoot('TabsPage');
           }
         } else {
-          this.navCtrl.setRoot('HomePage');
+          this.navCtrl.setRoot('TabsPage');
         }
       }
     });
@@ -108,7 +113,7 @@ export class LoginPage {
     this.loading.show();
     this.auth.loginWithFacebook().then(res => {
       this.loading.hide();
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('TabsPage');
     }).catch(err => {
       if (err)
         this.toast.showWithDuration(this.translate.get('LOGIN_FACEBOOK_ERROR'), ToastConfig.duration);
@@ -120,7 +125,7 @@ export class LoginPage {
     this.loading.show();
     this.auth.loginWithGoogle().then(res => {
       this.loading.hide();
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('TabsPage');
     }).catch(err => {
       if (err)
         this.toast.showWithDuration(this.translate.get('LOGIN_GOOGLE_ERROR'), ToastConfig.duration);
@@ -137,7 +142,7 @@ export class LoginPage {
         if (!exists) {
           this.navCtrl.setRoot('CompleteProfilePage');
         } else {
-          this.navCtrl.setRoot('HomePage');
+          this.navCtrl.setRoot('TabsPage');
         }
       });
     }).catch(err => {
@@ -151,7 +156,7 @@ export class LoginPage {
     this.loading.show();
     this.auth.loginWithEmail(this.loginForm.value['email'], this.loginForm.value['password']).then(res => {
       this.loading.hide();
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('TabsPage');
     }).catch(err => {
       console.log(err.code);
       this.toast.showError(err.code);
@@ -163,7 +168,7 @@ export class LoginPage {
     this.loading.show();
     this.auth.createUserWithEmailAndPassword(this.signupForm.value['email'], this.signupForm.value['password']).then(res => {
       this.loading.hide();
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('TabsPage');
     }).catch(err => {
       console.log(err.code);
       this.toast.showError(err.code);

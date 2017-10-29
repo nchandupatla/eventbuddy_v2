@@ -50,7 +50,7 @@ export class VerificationPage {
             if (self.user.providerData[0].providerId != 'twitter.com')
               self.navCtrl.setRoot('CompleteProfilePage');
             else
-              self.navCtrl.setRoot('HomePage');
+              self.navCtrl.setRoot('TabsPage');
           });
         }
       }

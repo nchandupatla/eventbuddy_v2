@@ -13,7 +13,7 @@ import { User } from '../models/user';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = "HomePage";
+  rootPage: any = undefined;
   user: User;
   userEmail:string;
   @ViewChild('nav') nav: NavController;
@@ -31,6 +31,21 @@ export class MyApp {
     private loading: LoadingProvider,
     private notification: NotificationProvider,
     private appCtrl: App) {
+      storage.get('introShown').then(result => {
+        //Intro is not yet shown.
+        if (result) {
+          storage.get('userLoggedIn').then(user =>{
+            if(user){           
+              this.rootPage='TabsPage';
+           }
+            else{
+            this.rootPage='LoginPage';
+            }
+          });
+        
+        } else {
+          this.rootPage='IntroPage';
+        } });
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -46,7 +61,7 @@ export class MyApp {
           this.menuCtrl.swipeEnable(false);
         }
       })
-
+     
       storage.get('language').then(language => {
         if (language) {
           // Set language.
