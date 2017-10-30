@@ -54,7 +54,7 @@ export class HomePage {
         
           this.auth.getUser().then((user: firebase.User) => {
             if (user) {
-              this.storage.set('userProfile',true);
+              this.storage.set('userLoggedIn',true);
               let provider = user.providerData[0].providerId;
               let isTwitter = provider == 'twitter.com';
               if (AuthConfig.emailVerification) {
@@ -96,9 +96,7 @@ export class HomePage {
                   }
                 });
               }
-            } else {
-              this.navCtrl.setRoot('LoginPage');
-            }
+            } 
           });
         
       
@@ -112,7 +110,7 @@ export class HomePage {
         this.notification.destroy().then(() => {
           this.auth.logout().then(() => {
             this.loading.hide();
-            this.storage.set('userProfile',false);
+            this.storage.set('userLoggedIn',false);
             this.navCtrl.setRoot('LoginPage');
           });
         });
